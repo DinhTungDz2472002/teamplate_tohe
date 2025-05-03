@@ -6,6 +6,9 @@ import Signup from '~/pages/Signup';
 import Login from '~/pages/Login';
 import Cart from '~/pages/Cart';
 import Sidebar from '~/pages/Sidebar';
+import Product from '~/components/Product';
+import ListProducts from '~/pages/LitsProducts';
+
 const publicRoutes = [
     { path: '/', component: Home },
     { path: '/Contact', component: Contact },
@@ -15,6 +18,8 @@ const publicRoutes = [
     { path: '/Signup', component: Signup },
     { path: '/Cart', component: Cart },
     { path: '/Sidebar', component: Sidebar },
+    { path: '/Product', component: Product },
+    { path: '/ListProducts', component: ListProducts },
 ];
 
 const privateRoutes = [];

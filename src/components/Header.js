@@ -11,8 +11,8 @@ function Header() {
                 <div className="px-4 mx-auto sm:px-6 lg:px-8">
                     <nav className="relative flex items-center justify-between h-16 lg:h-20">
                         <div className="hidden lg:flex lg:items-center lg:space-x-10">
-                            <Link to="/Sidebar" title="Home" className="text-base font-medium text-black">
-                                Sidebar
+                            <Link to="/Product" title="Home" className="text-base font-medium text-black">
+                                product
                             </Link>
                             <Link to="/" title="Home" className="text-base font-medium text-black">
                                 Trang Chủ
