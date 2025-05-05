@@ -1,25 +1,27 @@
+import Home from './Home';
+import ListProductAdmin from '~/pages/Admin/ListProductAdmin';
 function Sidebar() {
     return (
-        <div class="flex flex-1 bg-gray-50">
-            <div class="hidden md:flex md:w-64 md:flex-col">
-                <div class="flex flex-col flex-grow pt-5 overflow-y-auto bg-white">
-                    <div class="flex items-center flex-shrink-0 px-4">
+        <div className="flex flex-1 bg-gray-50">
+            <div className="hidden md:flex md:w-64 md:flex-col">
+                <div className="flex flex-col flex-grow pt-5 overflow-y-auto bg-white">
+                    <div className="flex items-center flex-shrink-0 px-4">
                         <img
-                            class="w-auto h-8"
+                            className="w-auto h-8"
                             src="https://landingfoliocom.imgix.net/store/collection/clarity-dashboard/images/logo.svg"
                             alt=""
                         />
                     </div>
 
-                    <div class="px-4 mt-8">
-                        <label for="" class="sr-only">
+                    <div className="px-4 mt-8">
+                        <label for="" className="sr-only">
                             {' '}
                             Search{' '}
                         </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <div className="relative">
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg
-                                    class="w-5 h-5 text-gray-400"
+                                    className="w-5 h-5 text-gray-400"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -38,26 +40,26 @@ function Sidebar() {
                                 type="search"
                                 name=""
                                 id=""
-                                class="block w-full py-2 pl-10 border border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"
+                                className="block w-full py-2 pl-10 border border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"
                                 placeholder="Search here"
                             />
                         </div>
                     </div>
 
-                    <div class="px-4 mt-6">
-                        <hr class="border-gray-200" />
+                    <div className="px-4 mt-6">
+                        <hr className="border-gray-200" />
                     </div>
 
-                    <div class="flex flex-col flex-1 px-3 mt-6">
-                        <div class="space-y-4">
-                            <nav class="flex-1 space-y-2">
+                    <div className="flex flex-col flex-1 px-3 mt-6">
+                        <div className="space-y-4">
+                            <nav className="flex-1 space-y-2">
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 bg-indigo-600 rounded-lg group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 bg-indigo-600 rounded-lg group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4 text-white"
+                                        className="flex-shrink-0 w-5 h-5 mr-4 text-white"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -75,10 +77,10 @@ function Sidebar() {
 
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -96,10 +98,10 @@ function Sidebar() {
 
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -117,10 +119,10 @@ function Sidebar() {
 
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -135,7 +137,7 @@ function Sidebar() {
                                     </svg>
                                     Customers
                                     <svg
-                                        class="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
+                                        className="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -147,15 +149,15 @@ function Sidebar() {
                                 </a>
                             </nav>
 
-                            <hr class="border-gray-200" />
+                            <hr className="border-gray-200" />
 
-                            <nav class="flex-1 space-y-2">
+                            <nav className="flex-1 space-y-2">
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -173,10 +175,10 @@ function Sidebar() {
 
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -194,10 +196,10 @@ function Sidebar() {
 
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -212,7 +214,7 @@ function Sidebar() {
                                     </svg>
                                     Analytics
                                     <svg
-                                        class="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
+                                        className="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -224,15 +226,15 @@ function Sidebar() {
                                 </a>
                             </nav>
 
-                            <hr class="border-gray-200" />
+                            <hr className="border-gray-200" />
 
-                            <nav class="flex-1 space-y-2">
+                            <nav className="flex-1 space-y-2">
                                 <a
                                     href="#"
-                                    class="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
+                                    className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-indigo-600 group"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 mr-4"
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -255,19 +257,19 @@ function Sidebar() {
                             </nav>
                         </div>
 
-                        <div class="pb-4 mt-20">
+                        <div className="pb-4 mt-20">
                             <button
                                 type="button"
-                                class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-gray-900 transition-all duration-200 rounded-lg hover:bg-gray-100"
+                                className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-gray-900 transition-all duration-200 rounded-lg hover:bg-gray-100"
                             >
                                 <img
-                                    class="flex-shrink-0 object-cover w-6 h-6 mr-3 rounded-full"
+                                    className="flex-shrink-0 object-cover w-6 h-6 mr-3 rounded-full"
                                     src="https://landingfoliocom.imgix.net/store/collection/clarity-dashboard/images/vertical-menu/2/avatar-male.png"
                                     alt=""
                                 />
                                 Jacob Jones
                                 <svg
-                                    class="w-5 h-5 ml-auto"
+                                    className="w-5 h-5 ml-auto"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -286,10 +288,12 @@ function Sidebar() {
                 </div>
             </div>
 
-            <div class="flex flex-col flex-1">
+            <div className="flex flex-col flex-1">
                 <main>
-                    <div class="py-6">
-                        <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">{/* <!-- ADD YOUR CONTENT HERE --> */}</div>
+                    <div className="py-6">
+                        <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+                            <ListProductAdmin />
+                        </div>
                     </div>
                 </main>
             </div>

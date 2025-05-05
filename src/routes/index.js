@@ -8,6 +8,7 @@ import Cart from '~/pages/Cart';
 import Sidebar from '~/pages/Sidebar';
 import Product from '~/components/Product';
 import ListProducts from '~/pages/LitsProducts';
+import ListProductAdmin from '~/pages/Admin/ListProductAdmin';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -20,6 +21,7 @@ const publicRoutes = [
     { path: '/Sidebar', component: Sidebar },
     { path: '/Product', component: Product },
     { path: '/ListProducts', component: ListProducts },
+    { path: '/ListProductAdmin', component: ListProductAdmin },
 ];
 
 const privateRoutes = [];

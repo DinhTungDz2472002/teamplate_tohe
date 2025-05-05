@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from '~/routes';
 import DefaultLayout from '~/components/DefaultLayout';
+import { ToastContainer } from 'react-toastify';
 function App() {
     return (
         <Router>
