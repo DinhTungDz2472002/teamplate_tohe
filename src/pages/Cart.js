@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Cart() {
     return (
         <section>
@@ -236,12 +238,13 @@ function Cart() {
                                 </div>
 
                                 <div className="flex justify-end">
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="/Checkout"
+                                        title="Thanh Toán"
                                         className="block rounded-sm bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                                     >
                                         Checkout
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
