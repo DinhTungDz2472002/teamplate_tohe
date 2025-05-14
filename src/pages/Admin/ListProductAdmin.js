@@ -50,7 +50,7 @@ export default function ListProductAdmin() {
                 moTaSp: editProduct.moTaSp || '',
                 anhSp: editProduct.anhSp || '',
                 maLoai: editProduct.maLoai || 1,
-                sltonKho: editProduct.sltonKho || 0,
+                sltonKho: editProduct.sltonKho || 10000,
                 ngayThemSp: new Date(),
             };
 
@@ -134,7 +134,6 @@ export default function ListProductAdmin() {
                     </select>
                 </div>
             </div>
-
             {/* Table */}
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -205,12 +204,10 @@ export default function ListProductAdmin() {
                     </tbody>
                 </table>
             </div>
-
             {/* Pagination */}
             <div className="flex justify-center mt-4">
                 <Pagination pageNumber={pageNumber} totalPages={totalPages} onPageChange={handleChangePage} />
             </div>
-
             {/* Modal thêm / sửa */}
             {editProduct && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
@@ -246,6 +243,21 @@ export default function ListProductAdmin() {
                                 }}
                             />
                         )}
+                        {/* nếu ảnh lỗi trả về logo */}
+                        {/* {editProduct.anhSp && (
+                            <img
+                                src={
+                                    editProduct.anhSp
+                                        ? `/assets/images/${editProduct.anhSp}.jpg`
+                                        : '/assets/images/logo.png'
+                                }
+                                alt={editProduct.tenSanPham}
+                                className="w-16 h-16 object-cover rounded mb-3"
+                                onError={(e) => {
+                                    if (e.target) e.target.src = '/assets/images/logo.png';
+                                }}
+                            />
+                        )} */}
                         <input
                             type="file"
                             accept="image/*"
@@ -278,7 +290,6 @@ export default function ListProductAdmin() {
                     </div>
                 </div>
             )}
-
             {/* Modal xác nhận xóa */}
             {confirmDeleteId && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">

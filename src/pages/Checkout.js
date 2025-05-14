@@ -27,7 +27,7 @@ const CartSummary = ({ items }) => {
                 <span>Total:</span>
                 <span>${totalPrice.toFixed(2)}</span>
             </div>
-            <button className="w-full bg-gray-800 text-white py-2 rounded mt-4">Checkout</button>
+            <button className="w-full bg-gray-800 text-white py-2 rounded mt-4">Thanh Toán</button>
         </div>
     );
 };
