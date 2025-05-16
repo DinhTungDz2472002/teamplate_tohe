@@ -73,7 +73,7 @@ function ListProducts() {
                 <div className="flex items-center gap-2 mb-6">
                     <span>Hiển thị:</span>
                     <select value={pageSize} onChange={handleChangePageSize} className="border px-2 py-1 rounded">
-                        {[5, 10, 15, 20].map((size) => (
+                        {[8, 12, 16, 20].map((size) => (
                             <option key={size} value={size}>
                                 {size} dòng
                             </option>

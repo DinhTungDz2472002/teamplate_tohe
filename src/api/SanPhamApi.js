@@ -5,7 +5,7 @@ const SanPhamApi = {
     // 1. Lấy danh sách sản phẩm có phân trang
     getList: (pageNumber, pageSize) => {
         return axios.get('/SanPham/GetList', {
-            params: { pageNumber, pageSize },
+            params: { pageNumber, pageSize: 8 },
         });
     },
 

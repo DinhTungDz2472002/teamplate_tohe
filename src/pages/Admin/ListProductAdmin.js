@@ -126,7 +126,7 @@ export default function ListProductAdmin() {
                 <div className="flex items-center gap-2">
                     <span>Hiển thị:</span>
                     <select value={pageSize} onChange={handleChangePageSize} className="border px-2 py-1 rounded">
-                        {[5, 10, 20, 30].map((size) => (
+                        {[8, 10, 20, 30].map((size) => (
                             <option key={size} value={size}>
                                 {size} dòng
                             </option>
