@@ -91,6 +91,13 @@ function Header() {
                                 Đăng nhập
                             </Link>
                             <Link
+                                to="/Logout"
+                                title="Đăng xuất"
+                                className="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"
+                            >
+                                Đăng Xuất
+                            </Link>
+                            <Link
                                 to="/Cart"
                                 title="Cart"
                                 className="flex items-center justify-center w-10 h-10 text-white bg-black rounded-full"
@@ -199,6 +206,13 @@ function Header() {
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     Đăng Nhập
+                                </Link>
+                                <Link
+                                    to="/Logout"
+                                    title="Đăng xuất"
+                                    className="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"
+                                >
+                                    Đăng Xuất
                                 </Link>
                             </div>
                         </div>

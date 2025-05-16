@@ -10,6 +10,8 @@ import Product from '~/components/Product';
 import ListProducts from '~/pages/LitsProducts';
 import ListProductAdmin from '~/pages/Admin/ListProductAdmin';
 import Checkout from '~/pages/Checkout';
+import check from '~/pages/check';
+import Logout from '~/components/Logout';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -24,6 +26,8 @@ const publicRoutes = [
     { path: '/Product', component: Product },
     { path: '/ListProducts', component: ListProducts },
     { path: '/ListProductAdmin', component: ListProductAdmin },
+    { path: '/check', component: check },
+    { path: '/logout', component: Logout },
 ];
 
 const privateRoutes = [];
