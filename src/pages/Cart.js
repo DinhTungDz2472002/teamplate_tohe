@@ -1,4 +1,3 @@
-// 5
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { CartContext } from '~/api/CartContext';
