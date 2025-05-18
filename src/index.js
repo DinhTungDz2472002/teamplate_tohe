@@ -7,26 +7,29 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from 'react-toastify';
 import { AuthProvider } from '~/api/AuthContext';
 import { CartProvider } from '~/api/CartContext';
+import { OrderProvider } from '~/api/OrderContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AuthProvider>
             <CartProvider>
-                <App />
-                <ToastContainer
-                    position="top-right"
-                    autoClose={800}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                    transition={Bounce}
-                />
+                <OrderProvider>
+                    <App />
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={800}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick={false}
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                        transition={Bounce}
+                    />
+                </OrderProvider>
             </CartProvider>
         </AuthProvider>
     </React.StrictMode>,

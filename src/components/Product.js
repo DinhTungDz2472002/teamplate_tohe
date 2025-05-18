@@ -23,7 +23,7 @@ function Product({ product }) {
             <div className="relative rounded-md overflow-hidden w-full pt-[100%]">
                 <img
                     className="absolute top-0 left-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-125"
-                    src={`/assets/images/${product.anhSp}.jpg`}
+                    src={`/assets/images/${product.anhSp}`}
                     alt={product.tenSanPham}
                     onError={(e) => (e.target.src = '/assets/images/placeholder.jpg')}
                 />
