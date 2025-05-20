@@ -40,6 +40,7 @@ const publicRoutes = [
     { path: '/logout', component: Logout },
 
     { path: '/orders', component: Order },
+    { path: '/MainLayoutAdmin', component: MainLayoutAdmin },
 
     //layout chuyển admin
     { path: '/Sidebar', component: () => <Navigate to="/ListProductAdmin" /> },
