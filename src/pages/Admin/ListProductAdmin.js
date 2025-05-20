@@ -298,117 +298,130 @@ export default function ListProductAdmin() {
             </div>
             {/* Modal thêm/sửa sản phẩm */}
             {modalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
-                    <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+                    onClick={() => setModalOpen(false)}
+                >
+                    <div
+                        className="bg-white rounded-lg shadow-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
                             {isAdding ? 'Thêm Sản Phẩm' : 'Sửa Sản Phẩm'}
                         </h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Tên sản phẩm */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Tên sản phẩm</label>
-                                <input
-                                    type="text"
-                                    name="tenSanPham"
-                                    value={productData.tenSanPham}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                    placeholder="Nhập tên sản phẩm"
-                                />
-                            </div>
-
-                            {/* Giá sản phẩm */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Giá sản phẩm (VND)
-                                </label>
-                                <input
-                                    type="number"
-                                    name="giaSanPham"
-                                    value={productData.giaSanPham}
-                                    onChange={handleInputChange}
-                                    required
-                                    min="0"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                    placeholder="Nhập giá sản phẩm"
-                                />
-                            </div>
-
-                            {/* Combobox thể loại */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Loại sản phẩm</label>
-                                <select
-                                    name="maLoai"
-                                    value={productData.maLoai}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                >
-                                    <option value="">Chọn loại sản phẩm</option>
-                                    {loaiList.map((loai) => (
-                                        <option key={loai.maLoai} value={loai.maLoai}>
-                                            {loai.tenLoai}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-
-                            {/* Số lượng tồn kho */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Số lượng tồn kho</label>
-                                <input
-                                    type="number"
-                                    name="sltonKho"
-                                    value={productData.sltonKho}
-                                    onChange={handleInputChange}
-                                    required
-                                    min="0"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                    placeholder="Nhập số lượng tồn kho"
-                                />
-                            </div>
-
-                            {/* Mô tả */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Mô tả</label>
-                                <textarea
-                                    name="moTaSp"
-                                    value={productData.moTaSp}
-                                    onChange={handleInputChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-y"
-                                    placeholder="Nhập mô tả sản phẩm"
-                                    rows="4"
-                                />
-                            </div>
-
-                            {/* Ảnh sản phẩm */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Ảnh sản phẩm</label>
-                                <div className="relative border-2 border-dashed border-gray-300 rounded-md p-4 text-center hover:border-blue-500 transition">
+                            {/* Chia 2 cột */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Cột 1: Tên sản phẩm */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Tên sản phẩm</label>
                                     <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={handleFileChange}
-                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                        type="text"
+                                        name="tenSanPham"
+                                        value={productData.tenSanPham}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                        placeholder="Nhập tên sản phẩm"
                                     />
-                                    <p className="text-gray-500">
-                                        {file ? file.name : 'Kéo thả hoặc nhấn để chọn ảnh'}
-                                    </p>
                                 </div>
-                                {previewUrl && (
-                                    <div className="mt-4">
-                                        <img
-                                            src={previewUrl}
-                                            alt="Preview"
-                                            className="w-32 h-32 object-cover rounded-md mx-auto"
+
+                                {/* Cột 2: Giá sản phẩm */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Giá sản phẩm (VND)
+                                    </label>
+                                    <input
+                                        type="number"
+                                        name="giaSanPham"
+                                        value={productData.giaSanPham}
+                                        onChange={handleInputChange}
+                                        required
+                                        min="0"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                        placeholder="Nhập giá sản phẩm"
+                                    />
+                                </div>
+
+                                {/* Cột 1: Combobox thể loại */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Loại sản phẩm
+                                    </label>
+                                    <select
+                                        name="maLoai"
+                                        value={productData.maLoai}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                    >
+                                        <option value="">Chọn loại sản phẩm</option>
+                                        {loaiList.map((loai) => (
+                                            <option key={loai.maLoai} value={loai.maLoai}>
+                                                {loai.tenLoai}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* Cột 2: Số lượng tồn kho */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Số lượng tồn kho
+                                    </label>
+                                    <input
+                                        type="number"
+                                        name="sltonKho"
+                                        value={productData.sltonKho}
+                                        onChange={handleInputChange}
+                                        required
+                                        min="0"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                        placeholder="Nhập số lượng tồn kho"
+                                    />
+                                </div>
+
+                                {/* Mô tả: Chiếm cả 2 cột */}
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Mô tả</label>
+                                    <textarea
+                                        name="moTaSp"
+                                        value={productData.moTaSp}
+                                        onChange={handleInputChange}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-y"
+                                        placeholder="Nhập mô tả sản phẩm"
+                                        rows="4"
+                                    />
+                                </div>
+
+                                {/* Ảnh sản phẩm: Chiếm cả 2 cột */}
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Ảnh sản phẩm</label>
+                                    <div className="relative border-2 border-dashed border-gray-300 rounded-md p-4 text-center hover:border-blue-500 transition">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleFileChange}
+                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                         />
+                                        <p className="text-gray-500">
+                                            {file ? file.name : 'Kéo thả hoặc nhấn để chọn ảnh'}
+                                        </p>
                                     </div>
-                                )}
+                                    {previewUrl && (
+                                        <div className="mt-4">
+                                            <img
+                                                src={previewUrl}
+                                                alt="Preview"
+                                                className="w-32 h-32 object-cover rounded-md mx-auto"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Nút gửi */}
-                            <div className="flex justify-end gap-2">
+                            <div className="flex justify-end gap-2 mt-6">
                                 <button
                                     type="button"
                                     className="bg-gray-400 hover:bg-gray-500 text-white py-1 px-3 rounded"

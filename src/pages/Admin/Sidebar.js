@@ -792,7 +792,7 @@ function Sidebar({ children }) {
 
                             <nav className="flex-1 space-y-2">
                                 <NavLink
-                                    to="/products"
+                                    to="/HoaDon_ChoXacNhan"
                                     className={({ isActive }) =>
                                         `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
                                             isActive
@@ -815,11 +815,11 @@ function Sidebar({ children }) {
                                             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                                         />
                                     </svg>
-                                    Products
+                                    Đơn Hàng Chờ Xác Nhận
                                 </NavLink>
 
                                 <NavLink
-                                    to="/orders"
+                                    to="/HoaDon_ChoGiaoHang"
                                     className={({ isActive }) =>
                                         `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
                                             isActive
@@ -842,11 +842,11 @@ function Sidebar({ children }) {
                                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                                         />
                                     </svg>
-                                    Orders
+                                    Đơn Hàng Chờ Giao
                                 </NavLink>
 
                                 <NavLink
-                                    to="/analytics"
+                                    to="/HoaDon_DaGiao"
                                     className={({ isActive }) =>
                                         `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
                                             isActive
@@ -869,7 +869,79 @@ function Sidebar({ children }) {
                                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                         />
                                     </svg>
-                                    Analytics
+                                    Đơn Đã Giao
+                                    <svg
+                                        className="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </NavLink>
+                                <NavLink
+                                    to="/HoaDon_KhachMuonHuy"
+                                    className={({ isActive }) =>
+                                        `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
+                                            isActive
+                                                ? 'text-white bg-indigo-600'
+                                                : 'text-gray-900 hover:text-white hover:bg-indigo-600'
+                                        }`
+                                    }
+                                >
+                                    <svg
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                        />
+                                    </svg>
+                                    Đơn Khách Muốn Hủy
+                                    <svg
+                                        className="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </NavLink>
+                                <NavLink
+                                    to="/HoaDon_DaHuy"
+                                    className={({ isActive }) =>
+                                        `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
+                                            isActive
+                                                ? 'text-white bg-indigo-600'
+                                                : 'text-gray-900 hover:text-white hover:bg-indigo-600'
+                                        }`
+                                    }
+                                >
+                                    <svg
+                                        className="flex-shrink-0 w-5 h-5 mr-4"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                        />
+                                    </svg>
+                                    Đơn Đã Hủy
                                     <svg
                                         className="w-4 h-6 ml-auto text-gray-400 group-hover:text-white"
                                         xmlns="http://www.w3.org/2000/svg"

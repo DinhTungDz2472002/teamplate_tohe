@@ -8,6 +8,7 @@ import { Bounce, ToastContainer } from 'react-toastify';
 import { AuthProvider } from '~/api/AuthContext';
 import { CartProvider } from '~/api/CartContext';
 import { OrderProvider } from '~/api/OrderContext';
+import { HoaDonProvider } from '~/api/HoaDonContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,20 +16,22 @@ root.render(
         <AuthProvider>
             <CartProvider>
                 <OrderProvider>
-                    <App />
-                    <ToastContainer
-                        position="top-right"
-                        autoClose={800}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick={false}
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="light"
-                        transition={Bounce}
-                    />
+                    <HoaDonProvider>
+                        <App />
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={800}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick={false}
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition={Bounce}
+                        />
+                    </HoaDonProvider>
                 </OrderProvider>
             </CartProvider>
         </AuthProvider>

@@ -18,6 +18,11 @@ import { Navigate } from 'react-router-dom';
 import AddProduct from '~/pages/Admin/AddProduct';
 import test from '~/pages/Admin/test';
 import Order from '~/pages/User/Order';
+import HoaDonChoGiaoHang from '~/pages/Admin/HoaDonChoGiaoHang';
+import HoaDonChoXacNhan from '~/pages/Admin/HoaDonChoXacNhan';
+import HoaDonDaGiao from '~/pages/Admin/HoaDonDaGiao';
+import HoaDonKhachMuonHuy from '~/pages/Admin/HoaDonKhachMuonHuy';
+import HoaDonDaHuy from '~/pages/Admin/HoaDonDaHuy';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -46,6 +51,11 @@ const privateRoutes = [
     { path: '/OrderManagement', component: OrderManagement },
     { path: '/AddProduct', component: AddProduct },
     { path: '/test', component: test },
+    { path: '/HoaDon_ChoXacNhan', component: HoaDonChoXacNhan },
+    { path: '/HoaDon_ChoGiaoHang', component: HoaDonChoGiaoHang },
+    { path: '/HoaDon_DaGiao', component: HoaDonDaGiao },
+    { path: '/HoaDon_KhachMuonHuy', component: HoaDonKhachMuonHuy },
+    { path: '/HoaDon_DaHuy', component: HoaDonDaHuy },
 
     //    { path: '/ListProductAdmin', component: ListProductAdmin, layout: Sidebar }, // "Dashboard" ánh xạ đến ListProductAdmin
     //     { path: '/admin/orders', component: OrderManagement, layout: Sidebar },

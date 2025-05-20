@@ -1,45 +1,37 @@
-import React, { useContext, useEffect } from 'react';
-import { OrderContext } from '~/api/OrderContext';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-const Order = () => {
-    const { hoaDons, loading, fetchHoaDons } = useContext(OrderContext);
+import React, { useContext, useEffect, useState } from 'react';
+import { HoaDonContext } from '~/api/HoaDonContext';
+
+const HoaDonDaHuy = () => {
+    const { invoices, loading, fetchHoaDons } = useContext(HoaDonContext);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [pageSize] = useState(10);
 
     useEffect(() => {
-        fetchHoaDons();
-    }, [fetchHoaDons]);
+        fetchHoaDons(pageNumber, pageSize, 'DaHuy');
+    }, [fetchHoaDons, pageNumber, pageSize]);
 
-    if (loading) return <p className="text-center text-gray-500 text-lg">Đang tải...</p>;
-    if (!hoaDons) return <p className="text-center text-red-500 text-lg">Không có dữ liệu</p>;
-    const handleEditStatus_Hdb = async (maHdb, endpoint, newstatus) => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                toast.error('Vui lòng đăng nhập để thực hiện hành động này.');
-                return;
-            }
-            const response = await axios.put(`https://localhost:7111/api/Hdb/${endpoint}?maHdb=${maHdb}`, null, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            fetchHoaDons();
-            toast.success(` ${newstatus}`);
-        } catch (error) {
-            console.error('Error updating status:', error);
-            const errorMessage = error.response?.data?.message || 'Có lỗi xảy ra khi cập nhật trạng thái.';
-            toast.error(errorMessage);
+    if (loading) {
+        return <p className="text-center text-gray-500 text-lg">Đang tải...</p>;
+    }
+
+    if (!invoices || !invoices.data) {
+        return <p className="text-center text-red-500 text-lg">Không có dữ liệu</p>;
+    }
+
+    const handlePageChange = (newPage) => {
+        if (newPage > 0 && newPage <= invoices.totalPages) {
+            setPageNumber(newPage);
         }
     };
 
     return (
         <div className="max-w-5xl mx-auto p-8 bg-gray-50 min-h-screen">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-10">Danh sách hóa đơn</h2>
-            {hoaDons.hoaDons.length === 0 ? (
-                <p className="text-center text-gray-600 text-xl">{hoaDons.message}</p>
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-10">Danh sách hóa đơn đã hủy</h2>
+            {invoices.data.length === 0 ? (
+                <p className="text-center text-gray-600 text-xl">{invoices.message}</p>
             ) : (
                 <div className="space-y-8">
-                    {hoaDons.hoaDons.map((hoaDon) => (
+                    {invoices.data.map((hoaDon) => (
                         <div
                             key={hoaDon.maHdb}
                             className="bg-white shadow-md rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100"
@@ -70,7 +62,7 @@ const Order = () => {
                                         Trạng thái:{' '}
                                         <span
                                             className={`font-normal ${
-                                                hoaDon.status === 'Chờ xác nhận' ? 'text-yellow-600' : 'text-blue-600'
+                                                hoaDon.status === 'Đã Hủy' ? 'text-red-600' : 'text-blue-600'
                                             }`}
                                         >
                                             {hoaDon.status}
@@ -84,16 +76,6 @@ const Order = () => {
                             <p className="text-gray-600 mb-6">
                                 Địa chỉ nhận: <span className="font-normal">{hoaDon.diaChi}</span>
                             </p>
-                            <div className="flex space-x-4 mb-6">
-                                <button
-                                    className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-                                    onClick={() =>
-                                        handleEditStatus_Hdb(hoaDon.maHdb, 'UpdateKhachMuonHuy', 'Đã Hủy Thành Công')
-                                    }
-                                >
-                                    Hủy Đơn
-                                </button>
-                            </div>
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Chi tiết hóa đơn</h3>
                             <div className="overflow-x-auto rounded-lg border border-gray-200">
                                 <table className="w-full text-left border-collapse">
@@ -113,12 +95,17 @@ const Order = () => {
                                             >
                                                 <td className="p-4">
                                                     <img
-                                                        src={`/assets/images/${chiTiet.anhSp}`}
+                                                        src={
+                                                            chiTiet.anhSp
+                                                                ? `/assets/images/${chiTiet.anhSp}`
+                                                                : '/assets/images/fallback.jpg'
+                                                        }
                                                         alt={chiTiet.tenSanPham}
                                                         className="w-12 h-12 object-cover rounded-md border border-gray-200"
+                                                        onError={(e) => (e.target.src = '/assets/images/fallback.jpg')}
                                                     />
                                                 </td>
-                                                <td className="p-4 text-gray-600">{chiTiet.tenSanPham}</td>
+                                                <td className="p-4 text-gray text-gray-600">{chiTiet.tenSanPham}</td>
                                                 <td className="p-4 text-gray-600">{chiTiet.sl}</td>
                                                 <td className="p-4 text-gray-600">
                                                     {chiTiet.thanhTien.toLocaleString()} VNĐ
@@ -132,8 +119,31 @@ const Order = () => {
                     ))}
                 </div>
             )}
+            {invoices.data.length > 0 && (
+                <div className="mt-8 flex justify-center space-x-4">
+                    <button
+                        onClick={() => handlePageChange(pageNumber - 1)}
+                        disabled={pageNumber === 1}
+                        className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        aria-label="Trang trước"
+                    >
+                        Trang trước
+                    </button>
+                    <span className="px-4 py-2 text-gray-700" aria-current="page">
+                        Trang {invoices.currentPage} / {invoices.totalPages}
+                    </span>
+                    <button
+                        onClick={() => handlePageChange(pageNumber + 1)}
+                        disabled={pageNumber === invoices.totalPages}
+                        className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        aria-label="Trang sau"
+                    >
+                        Trang sau
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
 
-export default Order;
+export default HoaDonDaHuy;
