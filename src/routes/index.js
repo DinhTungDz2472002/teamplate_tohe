@@ -23,6 +23,8 @@ import HoaDonChoXacNhan from '~/pages/Admin/HoaDonChoXacNhan';
 import HoaDonDaGiao from '~/pages/Admin/HoaDonDaGiao';
 import HoaDonKhachMuonHuy from '~/pages/Admin/HoaDonKhachMuonHuy';
 import HoaDonDaHuy from '~/pages/Admin/HoaDonDaHuy';
+import ForgotPassword from '~/pages/ForgotPassword';
+import ResetPassword from '~/pages/ResetPassword';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -38,6 +40,8 @@ const publicRoutes = [
     { path: '/ListProducts', component: ListProducts },
     { path: '/check', component: check },
     { path: '/logout', component: Logout },
+    { path: '/forgot-password', component: ForgotPassword },
+    { path: '/reset-password', component: ResetPassword },
 
     { path: '/orders', component: Order },
     { path: '/MainLayoutAdmin', component: MainLayoutAdmin },

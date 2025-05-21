@@ -3,6 +3,7 @@ import { AuthContext } from '~/api/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -127,12 +128,12 @@ function Login() {
                         </h2>
                         <p className="mt-2 text-base text-gray-600">
                             Don’t have an account?{' '}
-                            <a
-                                href="#"
+                            <Link
+                                to="/Signup"
                                 className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
                             >
-                                Create a free account
-                            </a>
+                                Tạo tài khoản
+                            </Link>
                         </p>
 
                         <form className="mt-8" onSubmit={handleSubmit}>
@@ -177,12 +178,12 @@ function Login() {
                                             Password
                                         </label>
 
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to="/forgot-password"
                                             className="text-sm font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
                                         >
-                                            Forgot password?
-                                        </a>
+                                            Quên mật khẩu
+                                        </Link>
                                     </div>
                                     <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

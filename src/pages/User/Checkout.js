@@ -1,214 +1,7 @@
-// const CartItem = ({ item }) => (
-//     <div className="flex items-center p-4 border-b">
-//         <img src="~/assets/images/logo.png" alt={item.name} className="w-20 h-20 object-cover mr-4" />
-//         <div>
-//             <h3 className="text-lg font-semibold">{item.name}</h3>
-//             <p className="text-gray-600">Size: {item.size}</p>
-//             <p className="text-gray-600">Color: {item.color}</p>
-//         </div>
-//     </div>
-// );
-
-// const CartSummary = ({ items }) => {
-//     const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
-
-//     return (
-//         <div className="bg-gray-100 p-6 rounded-lg h-fit">
-//             <h3 className="text-xl font-bold mb-4">Order Summary</h3>
-//             {items.map((item, index) => (
-//                 <div key={index} className="flex justify-between mb-2">
-//                     <span>
-//                         {item.name} (x{item.quantity})
-//                     </span>
-//                     <span>${(item.price * item.quantity).toFixed(2)}</span>
-//                 </div>
-//             ))}
-//             <div className="flex justify-between font-semibold mt-4 pt-4 border-t">
-//                 <span>Total:</span>
-//                 <span>${totalPrice.toFixed(2)}</span>
-//             </div>
-//             <button className="w-full bg-gray-800 text-white py-2 rounded mt-4">Thanh Toán</button>
-//         </div>
-//     );
-// };
-
-// const Checkout = () => {
-//     const cartItems = [{ name: 'Basic Tee 6-Pack', size: 'XXS', color: 'White', price: 29.99, quantity: 2 }];
-
-//     return (
-//         <div className="max-w-4xl mx-auto p-6 flex flex-col md:flex-row gap-6">
-//             <div className="flex-1 bg-white shadow-lg rounded-lg p-6">
-//                 <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-//                 {cartItems.map((item, index) => (
-//                     <CartItem key={index} item={item} />
-//                 ))}
-//             </div>
-//             <div className="w-full md:w-1/3">
-//                 <CartSummary items={cartItems} />
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Checkout;
-// 2
-
-// import { useLocation } from 'react-router-dom';
-// import { useState } from 'react';
-
-// const CartItem = ({ item }) => (
-//     <div className="flex items-center p-4 border-b">
-//         <img
-//             src={item.anhSp ? `/assets/images/${item.anhSp}.jpg` : '/assets/images/placeholder.jpg'}
-//             alt={item.sanPham}
-//             className="w-20 h-20 object-cover mr-4"
-//         />
-//         <div>
-//             <h3 className="text-lg font-semibold">{item.sanPham}</h3>
-//             <p className="text-gray-600">Mã sản phẩm: {item.maSanPham}</p>
-//             <p className="text-gray-600">Số lượng: {item.slSP}</p>
-//         </div>
-//     </div>
-// );
-
-// const CartSummary = ({ items, totalPrice }) => {
-//     return (
-//         <div className="bg-gray-100 p-6 rounded-lg h-fit">
-//             <h3 className="text-xl font-bold mb-4">Tóm tắt đơn hàng</h3>
-//             {items.map((item, index) => (
-//                 <div key={index} className="flex justify-between mb-2">
-//                     <span>
-//                         {item.sanPham} (x{item.slSP})
-//                     </span>
-//                     <span>{(item.giaSanPham * item.slSP).toLocaleString('vi-VN')} VNĐ</span>
-//                 </div>
-//             ))}
-//             <div className="flex justify-between mb-2">
-//                 <span>Phí vận chuyển</span>
-//                 <span>10,000 VNĐ</span>
-//             </div>
-//             <div className="flex justify-between font-semibold mt-4 pt-4 border-t">
-//                 <span>Tổng cộng:</span>
-//                 <span>{totalPrice.toLocaleString('vi-VN')} VNĐ</span>
-//             </div>
-//         </div>
-//     );
-// };
-
-// const Checkout = () => {
-//     const location = useLocation();
-//     const { selectedItems = [], totalPrice = 0 } = location.state || {};
-
-//     const [formData, setFormData] = useState({
-//         name: '',
-//         phone: '',
-//         address: '',
-//         note: '',
-//     });
-
-//     const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData((prev) => ({ ...prev, [name]: value }));
-//     };
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         if (!formData.name || !formData.phone || !formData.address) {
-//             alert('Vui lòng điền đầy đủ thông tin bắt buộc (Tên, Số điện thoại, Địa chỉ).');
-//             return;
-//         }
-//         // Handle order submission (e.g., send to API)
-//         console.log('Đơn hàng:', { items: selectedItems, userInfo: formData, totalPrice });
-//         alert('Đặt hàng thành công!');
-//         // Optionally, redirect or clear cart
-//     };
-
-//     return (
-//         <div className="max-w-4xl mx-auto p-6 flex flex-col md:flex-row gap-6">
-//             <div className="flex-1 bg-white shadow-lg rounded-lg p-6">
-//                 <h2 className="text-2xl font-bold mb-4">Giỏ hàng</h2>
-//                 {selectedItems.length === 0 ? (
-//                     <p className="text-gray-600">Không có sản phẩm nào được chọn.</p>
-//                 ) : (
-//                     selectedItems.map((item, index) => <CartItem key={index} item={item} />)
-//                 )}
-//                 <h2 className="text-2xl font-bold mt-8 mb-4">Thông tin đặt hàng</h2>
-//                 <form onSubmit={handleSubmit} className="space-y-4">
-//                     <div>
-//                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-//                             Tên *
-//                         </label>
-//                         <input
-//                             type="text"
-//                             id="name"
-//                             name="name"
-//                             value={formData.name}
-//                             onChange={handleInputChange}
-//                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-//                             Số điện thoại *
-//                         </label>
-//                         <input
-//                             type="tel"
-//                             id="phone"
-//                             name="phone"
-//                             value={formData.phone}
-//                             onChange={handleInputChange}
-//                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-//                             Địa chỉ *
-//                         </label>
-//                         <input
-//                             type="text"
-//                             id="address"
-//                             name="address"
-//                             value={formData.address}
-//                             onChange={handleInputChange}
-//                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label htmlFor="note" className="block text-sm font-medium text-gray-700">
-//                             Ghi chú
-//                         </label>
-//                         <textarea
-//                             id="note"
-//                             name="note"
-//                             value={formData.note}
-//                             onChange={handleInputChange}
-//                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-//                             rows="4"
-//                         />
-//                     </div>
-//                     <button
-//                         type="submit"
-//                         className="w-full bg-orange-500 text-white py-2 rounded mt-4 hover:bg-orange-600"
-//                     >
-//                         Đặt hàng
-//                     </button>
-//                 </form>
-//             </div>
-//             <div className="w-full md:w-1/3">
-//                 <CartSummary items={selectedItems} totalPrice={totalPrice} />
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Checkout;
-
-// 3 chưa có đặt hàng
-// import { useLocation } from 'react-router-dom';
-// import { useState, useEffect } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import { useState, useEffect, useContext } from 'react';
+// import { CartContext } from '~/api/CartContext';
+// import { toast } from 'react-toastify';
 
 // const CartItem = ({ item }) => (
 //     <div className="flex items-center p-4 border-b border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200 rounded-lg shadow-sm">
@@ -223,7 +16,9 @@
 //             <p className="text-sm text-gray-500">Số lượng: {item.slSP}</p>
 //         </div>
 //         <div className="text-right">
-//             <h3 className="text-lg font-medium text-gray-900">{item.giaSanPham.toLocaleString('vi-VN')} VNĐ</h3>
+//             <h3 className="text-lg font-medium text-gray-900">
+//                 {(item.giaSanPham * item.slSP).toLocaleString('vi-VN')} VNĐ
+//             </h3>
 //         </div>
 //     </div>
 // );
@@ -254,8 +49,12 @@
 
 // const Checkout = () => {
 //     const location = useLocation();
+//     const navigate = useNavigate();
+//     const { createOrder, fetchCart } = useContext(CartContext);
 //     const [selectedItems, setSelectedItems] = useState([]);
 //     const [totalPrice, setTotalPrice] = useState(0);
+//     const [error, setError] = useState(null);
+//     const [isSubmitting, setIsSubmitting] = useState(false);
 
 //     useEffect(() => {
 //         // Ưu tiên lấy dữ liệu từ location.state
@@ -276,7 +75,6 @@
 //         name: '',
 //         phone: '',
 //         address: '',
-//         note: '',
 //     });
 
 //     const handleInputChange = (e) => {
@@ -284,18 +82,56 @@
 //         setFormData((prev) => ({ ...prev, [name]: value }));
 //     };
 
-//     const handleSubmit = (e) => {
+//     const handleSubmit = async (e) => {
 //         e.preventDefault();
+//         setError(null);
+//         setIsSubmitting(true);
+
+//         // Kiểm tra dữ liệu đầu vào
 //         if (!formData.name || !formData.phone || !formData.address) {
-//             alert('Vui lòng điền đầy đủ thông tin bắt buộc (Tên, Số điện thoại, Địa chỉ).');
+//             setError('Vui lòng điền đầy đủ thông tin bắt buộc (Họ Tên, Số điện thoại, Địa chỉ).');
+//             setIsSubmitting(false);
 //             return;
 //         }
-//         // Xử lý gửi đơn hàng (ví dụ: gửi đến API)
-//         console.log('Đơn hàng:', { items: selectedItems, userInfo: formData, totalPrice });
-//         alert('Đặt hàng thành công!');
-//         // Xóa dữ liệu trong localStorage sau khi đặt hàng thành công (tùy chọn)
-//         localStorage.removeItem('selectedCartItems');
-//         // Có thể chuyển hướng hoặc xóa giỏ hàng
+
+//         // Kiểm tra định dạng số điện thoại
+//         const phoneRegex = /^(0[3|5|7|8|9])+([0-9]{8})$/;
+//         if (!phoneRegex.test(formData.phone)) {
+//             setError('Số điện thoại không hợp lệ.');
+//             setIsSubmitting(false);
+//             return;
+//         }
+
+//         if (selectedItems.length === 0) {
+//             setError('Không có sản phẩm nào được chọn.');
+//             setIsSubmitting(false);
+//             return;
+//         }
+
+//         // Chuẩn bị dữ liệu gửi đến API
+//         const orderData = {
+//             TenKhachHang: formData.name,
+//             DiaChi: formData.address,
+//             SDT: formData.phone,
+//             SelectedItems: selectedItems.map((item) => ({
+//                 MaChiTietGH: item.maChiTietGH,
+//                 SlSP: item.slSP,
+//             })),
+//         };
+
+//         try {
+//             const response = await createOrder(orderData);
+//             // Xóa localStorage sau khi đặt hàng thành công
+//             localStorage.removeItem('selectedCartItems');
+//             // Cập nhật lại giỏ hàng
+//             await fetchCart();
+//             // Chuyển hướng đến trang lịch sử đơn hàng
+//             navigate('/orders', { state: { hoaDon: response.hoaDon } });
+//         } catch (error) {
+//             setError(error.message);
+//         } finally {
+//             setIsSubmitting(false);
+//         }
 //     };
 
 //     return (
@@ -308,6 +144,7 @@
 //                     selectedItems.map((item, index) => <CartItem key={index} item={item} />)
 //                 )}
 //                 <h2 className="text-2xl font-bold mt-8 mb-4">Thông tin đặt hàng</h2>
+//                 {error && <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-md">{error}</div>}
 //                 <form onSubmit={handleSubmit} className="space-y-4">
 //                     <div>
 //                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -351,24 +188,15 @@
 //                             required
 //                         />
 //                     </div>
-//                     <div>
-//                         <label htmlFor="note" className="block text-sm font-medium text-gray-700">
-//                             Ghi chú
-//                         </label>
-//                         <textarea
-//                             id="note"
-//                             name="note"
-//                             value={formData.note}
-//                             onChange={handleInputChange}
-//                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-//                             rows="4"
-//                         />
-//                     </div>
+
 //                     <button
 //                         type="submit"
-//                         className="w-full bg-orange-500 text-white py-2 rounded mt-4 hover:bg-orange-600"
+//                         disabled={isSubmitting}
+//                         className={`w-full bg-orange-500 text-white py-2 rounded mt-4 hover:bg-orange-600 ${
+//                             isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+//                         }`}
 //                     >
-//                         Đặt hàng
+//                         {isSubmitting ? 'Đang xử lý...' : 'Đặt hàng'}
 //                     </button>
 //                 </form>
 //             </div>
@@ -381,7 +209,7 @@
 
 // export default Checkout;
 
-// 4
+// 2
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
@@ -442,16 +270,14 @@ const Checkout = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
-        // Ưu tiên lấy dữ liệu từ location.state
         if (location.state && location.state.selectedItems && location.state.totalPrice) {
             setSelectedItems(location.state.selectedItems);
             setTotalPrice(location.state.totalPrice);
         } else {
-            // Nếu không có location.state, lấy từ localStorage
             const storedItems = JSON.parse(localStorage.getItem('selectedCartItems')) || [];
             setSelectedItems(storedItems);
             const calculatedTotalPrice =
-                storedItems.reduce((total, item) => total + item.giaSanPham * item.slSP, 0) + 10000; // Thêm phí vận chuyển
+                storedItems.reduce((total, item) => total + item.giaSanPham * item.slSP, 0) + 10000;
             setTotalPrice(calculatedTotalPrice);
         }
     }, [location.state]);
@@ -472,14 +298,12 @@ const Checkout = () => {
         setError(null);
         setIsSubmitting(true);
 
-        // Kiểm tra dữ liệu đầu vào
         if (!formData.name || !formData.phone || !formData.address) {
             setError('Vui lòng điền đầy đủ thông tin bắt buộc (Họ Tên, Số điện thoại, Địa chỉ).');
             setIsSubmitting(false);
             return;
         }
 
-        // Kiểm tra định dạng số điện thoại
         const phoneRegex = /^(0[3|5|7|8|9])+([0-9]{8})$/;
         if (!phoneRegex.test(formData.phone)) {
             setError('Số điện thoại không hợp lệ.');
@@ -493,7 +317,6 @@ const Checkout = () => {
             return;
         }
 
-        // Chuẩn bị dữ liệu gửi đến API
         const orderData = {
             TenKhachHang: formData.name,
             DiaChi: formData.address,
@@ -506,14 +329,13 @@ const Checkout = () => {
 
         try {
             const response = await createOrder(orderData);
-            // Xóa localStorage sau khi đặt hàng thành công
             localStorage.removeItem('selectedCartItems');
-            // Cập nhật lại giỏ hàng
             await fetchCart();
-            // Chuyển hướng đến trang lịch sử đơn hàng
+            toast.success(response.message || 'Đặt hàng thành công! Hóa đơn đã được gửi qua email.');
             navigate('/orders', { state: { hoaDon: response.hoaDon } });
         } catch (error) {
-            setError(error.message);
+            setError(error.message || 'Lỗi khi đặt hàng.');
+            toast.error(error.message || 'Lỗi khi đặt hàng.');
         } finally {
             setIsSubmitting(false);
         }
@@ -573,7 +395,6 @@ const Checkout = () => {
                             required
                         />
                     </div>
-
                     <button
                         type="submit"
                         disabled={isSubmitting}
