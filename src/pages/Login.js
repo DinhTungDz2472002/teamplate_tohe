@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '~/api/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 function Login() {
     const { login } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -28,7 +30,6 @@ function Login() {
 
     return (
         <section className="bg-white">
-            <ToastContainer />
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
                     <div className="absolute inset-0">
@@ -204,14 +205,25 @@ function Login() {
                                         </div>
 
                                         <input
-                                            type="password"
+                                            type={showPassword ? 'text' : 'password'}
                                             id="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             required
                                             placeholder="Enter your password"
-                                            className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                                            className="block w-full py-4 pl-10 pr-12 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-gray-200 focus:bg-white caret-blue-600"
                                         />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                        >
+                                            {showPassword ? (
+                                                <AiOutlineEyeInvisible className="h-5 w-5" />
+                                            ) : (
+                                                <AiOutlineEye className="h-5 w-5" />
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
 

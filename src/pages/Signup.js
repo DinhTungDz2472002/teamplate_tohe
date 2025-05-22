@@ -349,7 +349,9 @@
 // export default Signup;
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '~/api/AuthContext';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 function Signup() {
     // State for form inputs
@@ -360,6 +362,7 @@ function Signup() {
         Email: '',
         Password: '',
     });
+    const [showPassword, setShowPassword] = useState(false);
     // State for error messages
     const [error, setError] = useState('');
     // Hook for navigation
@@ -384,7 +387,8 @@ function Signup() {
             await register(formData);
             navigate('/check');
         } catch (err) {
-            setError(err.message || 'Registration failed. Please try again.');
+            toast.error('Tên đăng nhập hoặc Email đã được sử dụng!');
+            setError(err.message || 'Tên đăng nhập hoặc Email đã được sử dụng!');
         }
     };
 
@@ -652,15 +656,26 @@ function Signup() {
                                             </svg>
                                         </div>
                                         <input
-                                            type="Password"
+                                            type={showPassword ? 'text' : 'password'}
                                             name="Password"
                                             id="Password"
                                             placeholder="Enter your password"
                                             value={formData.Password}
                                             onChange={handleChange}
-                                            className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                                            className="block w-full py-4 pl-10 pr-12 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-gray-200 focus:bg-white caret-blue-600"
                                             required
                                         />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                        >
+                                            {showPassword ? (
+                                                <AiOutlineEyeInvisible className="h-5 w-5" />
+                                            ) : (
+                                                <AiOutlineEye className="h-5 w-5" />
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                                 <div>

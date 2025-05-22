@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '~/api/CartContext';
 
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 function Product({ product }) {
-    const { addToCart, loading } = useContext(CartContext);
+    const { addToCart, loading, cart, fetchCart } = useContext(CartContext);
     const [isAdding, setIsAdding] = useState(false);
-
+    const navigate = useNavigate();
     const handleAddToCart = async (e) => {
         e.preventDefault();
         setIsAdding(true);
