@@ -20,6 +20,67 @@ function Product({ product }) {
         }
     };
 
+    const handleBuyNow = async () => {
+        try {
+            // Thêm sản phẩm vào giỏ hàng
+            const response = await addToCart(product.maSanPham, 1);
+            console.log('Response từ addToCart:', response);
+
+            let newCartItem;
+            if (response && response.chiTietGioHang) {
+                // Lấy dữ liệu từ response.chiTietGioHang
+                newCartItem = {
+                    maChiTietGH: response.chiTietGioHang.maChiTietGH,
+                    maSanPham: response.chiTietGioHang.maSanPham,
+                    sanPham: response.chiTietGioHang.sanPham.tenSanPham,
+                    anhSp: response.chiTietGioHang.sanPham.anhSp,
+                    giaSanPham: response.chiTietGioHang.sanPham.giaSanPham,
+                    slSP: response.chiTietGioHang.slSP,
+                    donGia: response.chiTietGioHang.donGia,
+                };
+            } else {
+                // Dự phòng: Gọi fetchCart và tìm trong cart
+                await fetchCart();
+                newCartItem = cart?.chiTietGioHang?.find((item) => item.maSanPham === product.maSanPham);
+
+                // Nếu không tìm thấy, dùng dữ liệu từ product
+                if (!newCartItem) {
+                    console.error('Không tìm thấy sản phẩm trong giỏ hàng:', product.maSanPham);
+                    newCartItem = {
+                        maChiTietGH: Date.now(),
+                        maSanPham: product.maSanPham,
+                        sanPham: product.tenSanPham,
+                        anhSp: product.anhSp,
+                        giaSanPham: product.giaSanPham,
+                        slSP: 1,
+                        donGia: product.giaSanPham,
+                    };
+                }
+            }
+
+            // Tạo cartItem theo định dạng yêu cầu
+            const cartItem = {
+                maChiTietGH: newCartItem.maChiTietGH, // Lấy maChiTietGH từ API
+                maSanPham: newCartItem.maSanPham,
+                sanPham: newCartItem.sanPham,
+                anhSp: newCartItem.anhSp,
+                giaSanPham: newCartItem.giaSanPham,
+                slSP: newCartItem.slSP,
+                donGia: newCartItem.donGia,
+            };
+
+            // Lưu vào localStorage
+            localStorage.setItem('selectedCartItems', JSON.stringify([cartItem]));
+            console.log('CartItem saved:', cartItem);
+
+            // Chuyển hướng đến trang checkout
+            navigate('/checkout');
+        } catch (err) {
+            console.error('Lỗi khi mua ngay:', err);
+            toast.error('Lỗi khi xử lý mua ngay');
+        }
+    };
+
     return (
         <div className="relative group shadow-lg rounded-2xl overflow-hidden bg-white p-4 hover:shadow-2xl transition-all duration-300">
             <div className="relative rounded-md overflow-hidden w-full pt-[100%]">
@@ -74,6 +135,7 @@ function Product({ product }) {
                 </button>
                 <button
                     type="button"
+                    onClick={handleBuyNow}
                     className="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
                 >
                     Mua ngay

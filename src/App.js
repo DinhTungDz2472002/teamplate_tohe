@@ -3,6 +3,7 @@ import { publicRoutes, privateRoutes } from '~/routes';
 import DefaultLayout from '~/components/DefaultLayout';
 import { ToastContainer } from 'react-toastify';
 import MainLayoutAdmin from './components/Admin/MainLayoutAdmin';
+import './App.css';
 function App() {
     return (
         <Router>
