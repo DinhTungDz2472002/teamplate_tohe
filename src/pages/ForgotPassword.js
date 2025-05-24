@@ -37,7 +37,7 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 to-orange-300">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 to-blue-300">
             <div className="max-w-md w-full p-8 bg-white shadow-2xl rounded-xl transform transition-all duration-300 hover:shadow-3xl">
                 <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-800">Quên Mật Khẩu</h2>
                 {message && (

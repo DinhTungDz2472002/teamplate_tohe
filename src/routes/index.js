@@ -4,7 +4,6 @@ import Introduce from '~/pages/Introduce';
 import CheckPrice from '~/pages/CheckPrice';
 import Signup from '~/pages/Signup';
 import Login from '~/pages/Login';
-import Sidebar from '~/pages/Admin/Sidebar';
 import Product from '~/components/Product';
 import ListProducts from '~/pages/LitsProducts';
 import ListProductAdmin from '~/pages/Admin/ListProductAdmin';
@@ -12,11 +11,10 @@ import check from '~/pages/check';
 import Logout from '~/components/Logout';
 import OrderManagement from '~/pages/Admin/OrderManagement';
 import Cart from '~/pages/User/Cart';
-import Checkout from '~/pages/User/Checkout';
-import MainLayoutAdmin from '~/components/Admin/MainLayoutAdmin';
-import { Navigate } from 'react-router-dom';
-import AddProduct from '~/pages/Admin/AddProduct';
 import test from '~/pages/Admin/test';
+
+import Checkout from '~/pages/User/Checkout';
+import AddProduct from '~/pages/Admin/AddProduct';
 import Order from '~/pages/User/Order';
 import HoaDonChoGiaoHang from '~/pages/Admin/HoaDonChoGiaoHang';
 import HoaDonChoXacNhan from '~/pages/Admin/HoaDonChoXacNhan';
@@ -26,6 +24,7 @@ import HoaDonDaHuy from '~/pages/Admin/HoaDonDaHuy';
 import ForgotPassword from '~/pages/ForgotPassword';
 import ResetPassword from '~/pages/ResetPassword';
 import MainLayoutUser from '~/components/User/MainLayoutUser';
+import Profile from '~/pages/Profile';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -37,18 +36,15 @@ const publicRoutes = [
     { path: '/Cart', component: Cart },
     { path: '/Checkout', component: Checkout },
 
-    // { path: '/Sidebar', component: Sidebar },
     { path: '/Product', component: Product },
     { path: '/ListProducts', component: ListProducts },
     { path: '/check', component: check },
     { path: '/logout', component: Logout },
     { path: '/forgot-password', component: ForgotPassword },
     { path: '/reset-password', component: ResetPassword },
+    { path: '/Profile', component: Profile },
 
     { path: '/orders', component: Order, Layout: MainLayoutUser },
-    // { path: '/MainLayoutAdmin', component: MainLayoutAdmin, layout: MainLayoutAdmin },
-    //layout chuyển admin
-    // { path: '/Sidebar', component: () => <Navigate to="/ListProductAdmin" /> },
 ];
 
 const privateRoutes = [

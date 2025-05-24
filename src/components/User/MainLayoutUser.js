@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import HeaderUser from './HeaderUser';
+import Footer from '../Footer';
 function MainLayoutUser({ children }) {
     return (
         <Fragment>
@@ -8,7 +9,7 @@ function MainLayoutUser({ children }) {
                 {/* <Slide /> */}
                 <div className="content">{children}</div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </Fragment>
     );
 }
