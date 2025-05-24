@@ -25,6 +25,7 @@ import HoaDonKhachMuonHuy from '~/pages/Admin/HoaDonKhachMuonHuy';
 import HoaDonDaHuy from '~/pages/Admin/HoaDonDaHuy';
 import ForgotPassword from '~/pages/ForgotPassword';
 import ResetPassword from '~/pages/ResetPassword';
+import MainLayoutUser from '~/components/User/MainLayoutUser';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -35,6 +36,7 @@ const publicRoutes = [
     { path: '/Signup', component: Signup },
     { path: '/Cart', component: Cart },
     { path: '/Checkout', component: Checkout },
+
     // { path: '/Sidebar', component: Sidebar },
     { path: '/Product', component: Product },
     { path: '/ListProducts', component: ListProducts },
@@ -43,16 +45,14 @@ const publicRoutes = [
     { path: '/forgot-password', component: ForgotPassword },
     { path: '/reset-password', component: ResetPassword },
 
-    { path: '/orders', component: Order },
-    { path: '/MainLayoutAdmin', component: MainLayoutAdmin },
-
+    { path: '/orders', component: Order, Layout: MainLayoutUser },
+    // { path: '/MainLayoutAdmin', component: MainLayoutAdmin, layout: MainLayoutAdmin },
     //layout chuyển admin
-    { path: '/Sidebar', component: () => <Navigate to="/ListProductAdmin" /> },
+    // { path: '/Sidebar', component: () => <Navigate to="/ListProductAdmin" /> },
 ];
 
 const privateRoutes = [
     { path: '/ListProductAdmin', component: ListProductAdmin },
-
     { path: '/OrderManagement', component: OrderManagement },
     { path: '/AddProduct', component: AddProduct },
     { path: '/test', component: test },
@@ -61,7 +61,6 @@ const privateRoutes = [
     { path: '/HoaDon_DaGiao', component: HoaDonDaGiao },
     { path: '/HoaDon_KhachMuonHuy', component: HoaDonKhachMuonHuy },
     { path: '/HoaDon_DaHuy', component: HoaDonDaHuy },
-
     //    { path: '/ListProductAdmin', component: ListProductAdmin, layout: Sidebar }, // "Dashboard" ánh xạ đến ListProductAdmin
     //     { path: '/admin/orders', component: OrderManagement, layout: Sidebar },
     //     { path: '/admin/agents', component: Agents, layout: Sidebar },

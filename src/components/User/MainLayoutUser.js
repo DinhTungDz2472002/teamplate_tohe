@@ -1,10 +1,16 @@
-import Footer from '~/components/Footer';
-import HeaderUser from '~/components/User/HeaderUser';
-
-function MainLayoutUser() {
-    <HeaderUser />;
-    return <h1>MainLayoutUser</h1>;
-    <Footer />;
+import { Fragment } from 'react';
+import HeaderUser from './HeaderUser';
+function MainLayoutUser({ children }) {
+    return (
+        <Fragment>
+            <HeaderUser />
+            <div className="container">
+                {/* <Slide /> */}
+                <div className="content">{children}</div>
+            </div>
+            {/* <Footer /> */}
+        </Fragment>
+    );
 }
 
 export default MainLayoutUser;

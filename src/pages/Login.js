@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { jwtDecode } from 'jwt-decode';
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -20,9 +21,22 @@ function Login() {
             return;
         }
         try {
-            await login(username, password);
+            const response = await login(username, password);
+            const decoded = jwtDecode(response.access_token); // Sử dụng jwtDecode ở đây
+            const role = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+            if (!response.access_token) {
+                navigate('/');
+            } else if (role === 'Admin') {
+                navigate('/ListProductAdmin');
+            } else if (role === 'User') {
+                navigate('/');
+            } else {
+                toast.error('Unknown role');
+                navigate('/');
+            }
+            window.location.reload();
             toast.success('Đăng nhập thành công');
-            navigate('/check');
         } catch (err) {
             toast.error(err.message || 'Đăng nhập thất bại');
         }

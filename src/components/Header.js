@@ -11,9 +11,9 @@ function Header() {
                 <div className="px-4 mx-auto sm:px-6 lg:px-8">
                     <nav className="relative flex items-center justify-between h-16 lg:h-20">
                         <div className="hidden lg:flex lg:items-center lg:space-x-10">
-                            <Link to="/Sidebar" title="Home" className="text-base font-medium text-black">
+                            {/* <Link to="/Sidebar" title="Home" className="text-base font-medium text-black">
                                 Sidebar
-                            </Link>
+                            </Link> */}
                             <Link to="/" title="Home" className="text-base font-medium text-black">
                                 Trang Chủ
                             </Link>
@@ -90,13 +90,13 @@ function Header() {
                             <Link to="/Login" title="Đăng nhập" className="text-base font-medium text-black">
                                 Đăng nhập
                             </Link>
-                            <Link
+                            {/* <Link
                                 to="/Logout"
                                 title="Đăng xuất"
                                 className="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"
                             >
                                 Đăng Xuất
-                            </Link>
+                            </Link> */}
                             <Link
                                 to="/Cart"
                                 title="Cart"

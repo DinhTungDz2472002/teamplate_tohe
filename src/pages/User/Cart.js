@@ -247,6 +247,15 @@ function Cart() {
         <section>
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm/py-12 lg:px-8">
                 <div className="mx-auto max-w-5xl">
+                    <div className="flex justify-end">
+                        <Link
+                            to="/orders"
+                            title="Orders"
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                        >
+                            Danh Sách Đơn Đặt
+                        </Link>
+                    </div>
                     <header className="text-center">
                         <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Giỏ Hàng</h1>
                     </header>

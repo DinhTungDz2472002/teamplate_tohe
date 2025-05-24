@@ -11,7 +11,8 @@ function Logout() {
             try {
                 await logout();
                 toast.success('Đăng xuất thành công');
-                navigate('/'); // chuyển hướng về trang đăng nhập
+                window.location.reload();
+                navigate('/login'); // chuyển hướng về trang đăng nhập
             } catch (error) {
                 toast.error('Lỗi khi đăng xuất');
                 console.error(error);
