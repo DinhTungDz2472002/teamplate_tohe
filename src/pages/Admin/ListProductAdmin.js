@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function ListProductAdmin() {
     const [products, setProducts] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
-    const [pageSize, setPageSize] = useState(5);
+    const [pageSize, setPageSize] = useState(8);
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
 
@@ -358,7 +358,7 @@ export default function ListProductAdmin() {
                     <select value={pageSize} onChange={handleChangePageSize} className="border px-2 py-1 rounded">
                         {[8, 10, 20, 30].map((size) => (
                             <option key={size} value={size}>
-                                {size} dòng
+                                {size} Sản phẩm
                             </option>
                         ))}
                     </select>

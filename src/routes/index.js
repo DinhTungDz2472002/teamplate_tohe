@@ -25,6 +25,7 @@ import ForgotPassword from '~/pages/ForgotPassword';
 import ResetPassword from '~/pages/ResetPassword';
 import MainLayoutUser from '~/components/User/MainLayoutUser';
 import Profile from '~/pages/Profile';
+import ProductDetail from '~/pages/ProductDetail';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -35,8 +36,9 @@ const publicRoutes = [
     { path: '/Signup', component: Signup },
     { path: '/Cart', component: Cart },
     { path: '/Checkout', component: Checkout },
+    { path: '/Checkout', component: Checkout },
 
-    { path: '/Product', component: Product },
+    { path: '/ProductDetail', component: ProductDetail },
     { path: '/ListProducts', component: ListProducts },
     { path: '/check', component: check },
     { path: '/logout', component: Logout },

@@ -5,7 +5,7 @@ function MainLayoutUser({ children }) {
     return (
         <Fragment>
             <HeaderUser />
-            <div className="container">
+            <div className="container ">
                 {/* <Slide /> */}
                 <div className="content">{children}</div>
             </div>
