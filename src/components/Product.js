@@ -1,18 +1,19 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '~/api/CartContext';
-
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-function Product({ product }) {
+
+function Product({ product, openModal }) {
     const { addToCart, loading, cart, fetchCart } = useContext(CartContext);
     const [isAdding, setIsAdding] = useState(false);
     const navigate = useNavigate();
+
     const handleAddToCart = async (e) => {
         e.preventDefault();
         setIsAdding(true);
         try {
             console.log('Thêm sản phẩm:', product.maSanPham);
-            await addToCart(product.maSanPham, 1); // Thêm 1 sản phẩm
+            await addToCart(product.maSanPham, 1);
         } catch (err) {
             console.error('Lỗi khi thêm vào giỏ hàng:', err);
         } finally {
@@ -22,13 +23,11 @@ function Product({ product }) {
 
     const handleBuyNow = async () => {
         try {
-            // Thêm sản phẩm vào giỏ hàng
             const response = await addToCart(product.maSanPham, 1);
             console.log('Response từ addToCart:', response);
 
             let newCartItem;
             if (response && response.chiTietGioHang) {
-                // Lấy dữ liệu từ response.chiTietGioHang
                 newCartItem = {
                     maChiTietGH: response.chiTietGioHang.maChiTietGH,
                     maSanPham: response.chiTietGioHang.maSanPham,
@@ -36,14 +35,12 @@ function Product({ product }) {
                     anhSp: response.chiTietGioHang.sanPham.anhSp,
                     giaSanPham: response.chiTietGioHang.sanPham.giaSanPham,
                     slSP: response.chiTietGioHang.slSP,
-                    donGia: response.chiTietGioHang.donGia,
+                    donGia: response.chiTietGioHang.sanPham.giaSanPham,
                 };
             } else {
-                // Dự phòng: Gọi fetchCart và tìm trong cart
                 await fetchCart();
                 newCartItem = cart?.chiTietGioHang?.find((item) => item.maSanPham === product.maSanPham);
 
-                // Nếu không tìm thấy, dùng dữ liệu từ product
                 if (!newCartItem) {
                     console.error('Không tìm thấy sản phẩm trong giỏ hàng:', product.maSanPham);
                     newCartItem = {
@@ -58,9 +55,8 @@ function Product({ product }) {
                 }
             }
 
-            // Tạo cartItem theo định dạng yêu cầu
             const cartItem = {
-                maChiTietGH: newCartItem.maChiTietGH, // Lấy maChiTietGH từ API
+                maChiTietGH: newCartItem.maChiTietGH,
                 maSanPham: newCartItem.maSanPham,
                 sanPham: newCartItem.sanPham,
                 anhSp: newCartItem.anhSp,
@@ -69,11 +65,8 @@ function Product({ product }) {
                 donGia: newCartItem.donGia,
             };
 
-            // Lưu vào localStorage
             localStorage.setItem('selectedCartItems', JSON.stringify([cartItem]));
             console.log('CartItem saved:', cartItem);
-
-            // Chuyển hướng đến trang checkout
             navigate('/checkout');
         } catch (err) {
             console.error('Lỗi khi mua ngay:', err);
@@ -83,7 +76,10 @@ function Product({ product }) {
 
     return (
         <div className="relative group shadow-lg rounded-2xl overflow-hidden bg-white p-4 hover:shadow-2xl transition-all duration-300">
-            <div className="relative rounded-md overflow-hidden w-full pt-[100%]">
+            <div
+                className="relative rounded-md overflow-hidden w-full pt-[100%] cursor-pointer"
+                onClick={() => openModal(product.maSanPham)}
+            >
                 <img
                     className="absolute top-0 left-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-125"
                     src={`/assets/images/${product.anhSp}`}
@@ -93,7 +89,15 @@ function Product({ product }) {
             </div>
             <div className="line-clamp-1 group-hover:line-clamp-none group-hover:whitespace-normal group-hover:overflow-visible">
                 <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                    <a href="#" title="" className="relative block">
+                    <a
+                        href="#"
+                        title=""
+                        className="relative block"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            openModal(product.maSanPham);
+                        }}
+                    >
                         {product.tenSanPham}
                         <span className="absolute inset-0" aria-hidden="true"></span>
                     </a>
