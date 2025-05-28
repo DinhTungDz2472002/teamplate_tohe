@@ -1,9 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Get current date
+const today = new Date();
+
+// Create end date by adding 5 days
+const endDate = new Date(today);
+endDate.setDate(today.getDate() + 5);
+
+// Format dates to DD/MM/YYYY
+const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+};
 const CheckPrice = () => {
     const tourInfo = {
-        date: 'Từ ngày 13/05/2025 - 18/05/2025',
+        date: `Từ ngày ${formatDate(today)} - ${formatDate(endDate)}`,
         priceChild: '90.000 đ/trẻ em (Ưu đãi, thưởng thức keo, bánh tổ hành)',
         priceAdult: '150.000 đ/người lớn (Vé vào cổng, thưởng thức bánh tổ hành)',
         notes: [
@@ -28,7 +42,7 @@ const CheckPrice = () => {
             details: [
                 { category: 'Trẻ em (được 10 tuổi)', price: '90.000 VND/pax' },
                 { category: 'Người lớn', price: '150.000 VND/pax' },
-                { note: 'Giá đã bao gồm vé vào cổng và tour du lịch 10 ngày' },
+                { note: 'Giá đã bao gồm vé vào cổng các điểm tham quan, tour du lịch 10 ngày' },
             ],
         },
         { type: '3. Lưu ý khi đặt tour', details: [{ note: 'Đặt tour trước 2 ngày để nhận ưu đãi 10%.' }] },
@@ -45,12 +59,12 @@ const CheckPrice = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white py-10">
+        <div className="min-h-screen bg-white py-10 bg-gradient-to-br from-orange-100 to-blue-300 ">
             {/* Tiêu đề và thông tin tour */}
             <div className="container mx-auto px-4 text-center">
                 <div className="flex items-center justify-center mb-4">
-                    <h1 className="text-3xl font-bold text-black mr-2">CHƯƠNG TRÌNH TOUR Trải Nghiệm Tò He</h1>
-                    <img src="/assets/images/logo.png" alt="TÒ HE Logo" className="h-10" />
+                    <h1 className="text-3xl font-bold text-black mr-2">CHƯƠNG TRÌNH TOUR TRẢI NGHIỆM TÒ HE</h1>
+                    {/* <img src="/assets/images/logo.png" alt="TÒ HE Logo" className="h-10" /> */}
                 </div>
                 <p className="text-gray-700 mb-2">{tourInfo.date}</p>
                 <p className="text-gray-700 mb-2">{tourInfo.priceChild}</p>

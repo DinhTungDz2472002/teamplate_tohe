@@ -9,11 +9,11 @@ function Sidebar() {
             <div className="flex flex-col flex-grow pt-5 overflow-y-auto bg-white">
                 {/* Logo Section */}
                 <div className="flex items-center flex-shrink-0 px-4">
-                    <img
+                    {/* <img
                         className="w-auto h-8"
                         src="https://landingfoliocom.imgix.net/store/collection/clarity-dashboard/images/logo.svg"
                         alt="Logo"
-                    />
+                    /> */}
                 </div>
 
                 {/* Search Bar */}
@@ -84,7 +84,7 @@ function Sidebar() {
                             </NavLink>
 
                             <NavLink
-                                to="/OrderManagement"
+                                to="/Loai"
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
                                         isActive
@@ -107,9 +107,47 @@ function Sidebar() {
                                         d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                     />
                                 </svg>
-                                Đơn Hàng
+                                Loại Sản Phẩm
+                            </NavLink>
+                            <NavLink
+                                to="/ChatLieu"
+                                className={({ isActive }) =>
+                                    `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
+                                        isActive
+                                            ? 'text-white bg-indigo-600'
+                                            : 'text-gray-900 hover:text-white hover:bg-indigo-600'
+                                    }`
+                                }
+                            >
+                                <svg
+                                    className="flex-shrink-0 w-5 h-5 mr-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                    />
+                                </svg>
+                                Chất Liệu
                             </NavLink>
 
+                            <NavLink
+                                to="/ThongKe"
+                                className={({ isActive }) =>
+                                    `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
+                                        isActive
+                                            ? 'text-white bg-indigo-600'
+                                            : 'text-gray-900 hover:text-white hover:bg-indigo-600'
+                                    }`
+                                }
+                            >
+                                Thống Kê
+                            </NavLink>
                             <NavLink
                                 to="/AddProduct"
                                 className={({ isActive }) =>

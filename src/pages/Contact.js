@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div className="min-h-screen bg-gray-100 py-10">
+        <div className="min-h-screen bg-gray-100 py-10 bg-gradient-to-br from-orange-100 to-blue-300">
             {/* Tiêu đề và thông tin liên hệ */}
             <div className="container mx-auto px-4 text-center">
                 <h1 className="text-3xl font-bold text-red-600 mb-4">LIÊN HỆ VỚI NGHỆ NHÂN</h1>

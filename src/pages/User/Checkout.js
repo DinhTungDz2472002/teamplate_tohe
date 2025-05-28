@@ -17,9 +17,7 @@ const CartItem = ({ item }) => (
             <p className="text-sm text-gray-500">Số lượng: {item.slSP}</p>
         </div>
         <div className="text-right">
-            <h3 className="text-lg font-medium text-gray-900">
-                {(item.giaSanPham * item.slSP).toLocaleString('vi-VN')} VNĐ
-            </h3>
+            <h3 className="text-lg font-medium text-gray-900">{item.giaSanPham.toLocaleString('vi-VN')} VNĐ</h3>
         </div>
     </div>
 );

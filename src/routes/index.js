@@ -26,6 +26,9 @@ import ResetPassword from '~/pages/ResetPassword';
 import MainLayoutUser from '~/components/User/MainLayoutUser';
 import Profile from '~/pages/Profile';
 import ProductDetail from '~/pages/ProductDetail';
+import Loai from '~/pages/Admin/Loai';
+import ChatLieu from '~/pages/Admin/Chatlieu';
+import ThongKe from '~/pages/Admin/Thongke';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -59,6 +62,10 @@ const privateRoutes = [
     { path: '/HoaDon_DaGiao', component: HoaDonDaGiao },
     { path: '/HoaDon_KhachMuonHuy', component: HoaDonKhachMuonHuy },
     { path: '/HoaDon_DaHuy', component: HoaDonDaHuy },
+    { path: '/Loai', component: Loai },
+    { path: '/ChatLieu', component: ChatLieu },
+    { path: '/ThongKe', component: ThongKe },
+
     //    { path: '/ListProductAdmin', component: ListProductAdmin, layout: Sidebar }, // "Dashboard" ánh xạ đến ListProductAdmin
     //     { path: '/admin/orders', component: OrderManagement, layout: Sidebar },
     //     { path: '/admin/agents', component: Agents, layout: Sidebar },
