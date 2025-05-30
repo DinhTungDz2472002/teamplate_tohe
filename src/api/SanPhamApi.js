@@ -29,9 +29,6 @@ const SanPhamApi = {
     },
 
     // 5. Cập nhật sản phẩm
-    // update: (data) => {
-    //     return axios.put('/SanPham/Update', data);
-    // },
     update: async (payload) => {
         const response = await axios.put(`/SanPham/Update`, payload, {
             headers: { 'Content-Type': 'multipart/form-data' },

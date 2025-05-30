@@ -155,17 +155,82 @@ const Introduce = () => {
             </div>
 
             {/* Introduction Section */}
-            <div className="w-full max-w-4xl mx-auto p-6 my-10 bg-white shadow-2xl rounded-xl text-center">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 font-sans">Giới Thiệu Về Tò He</h1>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    Tò he là một loại hình nghệ thuật dân gian truyền thống của Việt Nam, nơi các nghệ nhân tạo ra những
-                    bức tượng nhỏ đầy màu sắc từ bột gạo nếp. Những món đồ chơi này thường có hình dạng động vật, nhân
-                    vật thần thoại hoặc biểu tượng văn hóa, được nhuộm bằng màu tự nhiên từ nghệ, dành dành, và gấc. Có
-                    nguồn gốc từ các làng quê Việt Nam, tò he là biểu tượng của các lễ hội văn hóa, thu hút mọi lứa tuổi
-                    bởi thiết kế sống động và sự khéo léo của nghệ nhân. Dù cạnh tranh với đồ chơi hiện đại, tò he vẫn
-                    giữ được giá trị văn hóa, được giới thiệu rộng rãi trên thế giới.
+            <section className="w-full max-w-5xl mx-auto px-6 py-12 my-10 bg-gradient-to-br from-white to-gray-50 shadow-xl rounded-2xl text-center">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 font-sans mb-6">
+                    Tò He - Hồn Dân Tộc Việt
+                </h1>
+                <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                    Tò he là biểu tượng của nghệ thuật dân gian Việt Nam, được nặn từ bột gạo nếp với hình thù ngộ
+                    nghĩnh như con vật, hoa lá, nhân vật cổ tích, hay các nhân vật hoạt hình hiện đại. Không chỉ là món
+                    đồ chơi, tò he còn là một tác phẩm nghệ thuật sống động, mang đậm bản sắc văn hóa Việt.
                 </p>
-            </div>
+
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    {/* Nguồn gốc */}
+                    <div className="p-6 bg-white rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-3">1. Nguồn Gốc</h2>
+                        <p className="text-gray-600">
+                            Tò he ra đời từ hàng trăm năm trước tại các làng quê đồng bằng Bắc Bộ, đặc biệt là làng Xuân
+                            La, huyện Phú Xuyên, Hà Nội – cái nôi của nghệ thuật nặn tò he.
+                        </p>
+                    </div>
+
+                    {/* Chất liệu */}
+                    <div className="p-6 bg-white rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-3">2. Chất Liệu</h2>
+                        <ul className="text-gray-600 list-disc list-inside">
+                            <li>
+                                <strong>Bột gạo nếp:</strong> Nguyên liệu chính, nhào kỹ, nhuộm màu thực phẩm an toàn.
+                            </li>
+                            <li>
+                                <strong>Màu sắc:</strong> 7 màu cơ bản - đỏ, vàng, xanh lá, xanh da trời, trắng, đen,
+                                hồng.
+                            </li>
+                            <li>
+                                <strong>Que tre:</strong> Cắm vào tò he để dễ cầm hoặc trang trí.
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Kỹ thuật và hình dáng */}
+                    <div className="p-6 bg-white rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-3">3. Kỹ Thuật & Hình Dáng</h2>
+                        <p className="text-gray-600">
+                            Nghệ nhân nặn tay trực tiếp, không dùng khuôn, tạo nên những hình thù sinh động như rồng,
+                            phượng, chim muông, hoa quả, hay nhân vật cổ tích (Thạch Sanh, Tấm Cám) và hoạt hình
+                            (Doraemon, Pikachu).
+                        </p>
+                    </div>
+
+                    {/* Giá trị văn hóa */}
+                    <div className="p-6 bg-white rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-3">4. Giá Trị Văn Hóa</h2>
+                        <ul className="text-gray-600 list-disc list-inside">
+                            <li>
+                                <strong>Giáo dục:</strong> Truyền tải câu chuyện cổ tích, khơi gợi trí tưởng tượng và
+                                tình yêu văn hóa dân tộc.
+                            </li>
+                            <li>
+                                <strong>Trình diễn:</strong> Thu hút du khách tại lễ hội, khu vui chơi, đặc biệt là trẻ
+                                em.
+                            </li>
+                            <li>
+                                <strong>Xuất khẩu văn hóa:</strong> Đại diện văn hóa Việt trong các sự kiện giao lưu
+                                quốc tế.
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Tò he ngày nay */}
+                    <div className="p-6 bg-white rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-3">5. Tò He Ngày Nay</h2>
+                        <p className="text-gray-600">
+                            Tò he giữ hồn truyền thống nhưng không ngừng đổi mới với mẫu mã hiện đại, kết hợp giữa dân
+                            gian và đương đại. Nhiều sản phẩm được dùng làm quà lưu niệm hoặc trưng bày.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
             {/* Article Cards Section */}
             <div className="w-full max-w-6xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

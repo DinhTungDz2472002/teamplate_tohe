@@ -89,8 +89,8 @@ const Contact = () => {
                         className="w-full h-auto rounded-lg shadow-lg"
                     />
                     <div className="mt-4 text-center">
-                        <p className="text-xl font-semibold text-red-600">Tháp rùa hồ gươm</p>
-                        <p className="text-gray-500 italic">Hãy đến trải nghiệm vớix Tò He - Nét Văn Hóa Việt</p>
+                        <p className="text-xl font-semibold text-red-600">Tò He - Nét Văn Hóa Việt</p>
+                        <p className="text-gray-500 italic">Hãy đến trải nghiệm</p>
                     </div>
                 </div>
             </div>

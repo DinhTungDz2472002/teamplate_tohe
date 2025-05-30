@@ -49,7 +49,7 @@ function Login() {
                     <div className="absolute inset-0">
                         <img
                             className="object-cover object-top w-full h-full"
-                            src="https://cdn.rareblocks.xyz/collection/celebration/images/signin/4/girl-thinking.jpg"
+                            src="https://thuthuatnhanh.com/wp-content/uploads/2023/01/hinh-thap-rua-o-ha-noi.jpg"
                             alt="Girl thinking"
                             loading="lazy"
                         />
@@ -59,8 +59,7 @@ function Login() {
                     <div className="relative">
                         <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
                             <h3 className="text-4xl font-bold text-white">
-                                Join 35k+ web professionals & <br className="hidden xl:block" />
-                                build your website
+                                Tò He - Nét Văn Hóa Việt <br className="hidden xl:block" />
                             </h3>
                             <ul className="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
                                 <li className="flex items-center space-x-3">
@@ -138,11 +137,9 @@ function Login() {
 
                 <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                     <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-                        <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-                            Sign in to Celebration
-                        </h2>
+                        <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Đăng Nhập</h2>
                         <p className="mt-2 text-base text-gray-600">
-                            Don’t have an account?{' '}
+                            Đăng ký nếu bạn chưa có tài khoản?{' '}
                             <Link
                                 to="/Signup"
                                 className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
@@ -181,7 +178,7 @@ function Login() {
                                             value={username}
                                             onChange={(e) => setUsername(e.target.value)}
                                             required
-                                            placeholder="Enter your username"
+                                            placeholder="Tên đăng nhập"
                                             className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                                         />
                                     </div>
@@ -224,7 +221,7 @@ function Login() {
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             required
-                                            placeholder="Enter your password"
+                                            placeholder="Nhập mật khẩu gồm 6 ký tự trở lên"
                                             className="block w-full py-4 pl-10 pr-12 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-gray-200 focus:bg-white caret-blue-600"
                                         />
                                         <button

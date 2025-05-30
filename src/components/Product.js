@@ -125,7 +125,7 @@ function Product({ product, openModal }) {
                 </div>
             </div>
             <div className="mt-2">
-                <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 transition-colors duration-300 group-hover:text-gray-700 group-hover:line-clamp-none group-hover:whitespace-normal group-hover:overflow-visible">
+                <p className="text-sm text-gray-500 h-[3rem] leading-relaxed line-clamp-2 transition-colors duration-300 group-hover:text-gray-700 group-hover:line-clamp-none group-hover:whitespace-normal group-hover:overflow-visible">
                     {product.moTaSp}
                 </p>
             </div>

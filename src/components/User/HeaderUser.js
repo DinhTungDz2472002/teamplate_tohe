@@ -6,7 +6,7 @@ function HeaderUser() {
     const [menuOpen, setMenuOpen] = useState(false); // << trạng thái mở/đóng
 
     return (
-        <header className="sticky top-100 z-50 bg-white">
+        <header className="sticky top-0 z-50 bg-white">
             {/* <!-- lg+ --> */}
             <div className="bg-gray-100 border-b border-gray-200">
                 <div className="px-4 mx-auto sm:px-6 lg:px-8">

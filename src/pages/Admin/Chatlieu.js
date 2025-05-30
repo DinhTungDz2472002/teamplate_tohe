@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 function ChatLieu() {
     const [materials, setMaterials] = useState([]);
-    const [tenChatLieu, setTenChatLieu] = useState('');
+    const [tenCl, setTenCl] = useState('');
     const [editingId, setEditingId] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // Base URL for API
+    const API_BASE_URL = 'https://localhost:7111';
+
     // Fetch all materials
     const fetchMaterials = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://localhost:7111/api/ChatLieu');
-            if (!response.ok) throw new Error('Không thể tải danh sách chất liệu');
+            const response = await fetch(`${API_BASE_URL}/api/ChatLieu`);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Không thể tải danh sách chất liệu');
+            }
             const data = await response.json();
             setMaterials(data);
-            setError(null); // Clear any previous errors
+            setError(null);
         } catch (err) {
             setError(err.message);
+            toast.error(err.message);
         } finally {
             setLoading(false);
         }
@@ -27,33 +35,52 @@ function ChatLieu() {
     // Add or Update material
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!tenChatLieu.trim()) {
-            setError('Tên chất liệu là bắt buộc');
+        if (!tenCl.trim()) {
+            setError('Tên chất liệu không được để trống.');
+            toast.error('Tên chất liệu không được để trống.');
             return;
         }
 
         try {
             setLoading(true);
-            const url = editingId
-                ? `https://localhost:7111/api/ChatLieu/${editingId}`
-                : 'https://localhost:7111/api/ChatLieu';
-            const method = editingId ? 'PUT' : 'POST';
+            let url, method, body;
+
+            if (editingId) {
+                // Update request (PUT)
+                url = `${API_BASE_URL}/api/Update_ChatLieu/${editingId}?TenCl=${encodeURIComponent(tenCl.trim())}`;
+                method = 'PUT';
+                body = null;
+            } else {
+                // Create request (POST)
+                url = `${API_BASE_URL}/api/Create_ChatLieu`;
+                method = 'POST';
+                const formData = new FormData();
+                formData.append('TenCl', tenCl.trim());
+                body = formData;
+            }
+
             const response = await fetch(url, {
                 method,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ tenCl: tenChatLieu }), // Changed to tenCl
+                body,
             });
 
-            if (!response.ok) throw new Error('Không thể lưu chất liệu');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Không thể lưu chất liệu');
+            }
+
+            const responseData = await response.json();
             await fetchMaterials();
-            setTenChatLieu('');
+            setTenCl('');
             setEditingId(null);
             setError(null);
             setIsModalOpen(false);
+            toast.success(
+                responseData.message || (editingId ? 'Cập nhật chất liệu thành công' : 'Thêm chất liệu thành công'),
+            );
         } catch (err) {
             setError(err.message);
+            toast.error(err.message);
         } finally {
             setLoading(false);
         }
@@ -64,17 +91,20 @@ function ChatLieu() {
         if (!window.confirm('Bạn có chắc muốn xóa chất liệu này?')) return;
         try {
             setLoading(true);
-            const response = await fetch(`https://localhost:7111/api/ChatLieu/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/api/Delete_ChatLieu/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
             });
-            if (!response.ok) throw new Error('Không thể xóa chất liệu');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Không thể xóa chất liệu');
+            }
+            const responseData = await response.json();
             await fetchMaterials();
             setError(null);
+            toast.success(responseData.message || 'Xóa chất liệu thành công');
         } catch (err) {
             setError(err.message);
+            toast.error(err.message);
         } finally {
             setLoading(false);
         }
@@ -82,14 +112,14 @@ function ChatLieu() {
 
     // Edit material
     const handleEdit = (material) => {
-        setTenChatLieu(material.tenCl); // Changed to tenCl
-        setEditingId(material.maCl); // Changed to maCl
+        setTenCl(material.tenCl);
+        setEditingId(material.maCl);
         setIsModalOpen(true);
     };
 
     // Open modal for adding new material
     const openAddModal = () => {
-        setTenChatLieu('');
+        setTenCl('');
         setEditingId(null);
         setError(null);
         setIsModalOpen(true);
@@ -98,7 +128,7 @@ function ChatLieu() {
     // Close modal
     const closeModal = () => {
         setIsModalOpen(false);
-        setTenChatLieu('');
+        setTenCl('');
         setEditingId(null);
         setError(null);
     };
@@ -119,11 +149,6 @@ function ChatLieu() {
                 </button>
             </div>
 
-            {/* Error Display */}
-            {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>
-            )}
-
             {/* Modal */}
             {isModalOpen && (
                 <div
@@ -138,15 +163,15 @@ function ChatLieu() {
                         </h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label htmlFor="tenChatLieu" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="tenCl" className="block text-sm font-medium text-gray-700">
                                     Tên Chất Liệu
                                 </label>
                                 <input
-                                    id="tenChatLieu"
+                                    id="tenCl"
                                     type="text"
-                                    value={tenChatLieu}
-                                    onChange={(e) => setTenChatLieu(e.target.value)}
-                                    className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                                    value={tenCl}
+                                    onChange={(e) => setTenCl(e.target.value)}
+                                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="Nhập tên chất liệu"
                                     aria-required="true"
                                 />
@@ -203,11 +228,11 @@ function ChatLieu() {
                         ) : (
                             materials.map((material, index) => (
                                 <tr
-                                    key={material.maCl} // Changed to maCl
+                                    key={material.maCl}
                                     className={`border-b hover:bg-gray-50 ${index % 2 === 0 ? '' : 'bg-gray-100'}`}
                                 >
-                                    <td className="py-3 px-6">{material.maCl}</td> {/* Changed to maCl */}
-                                    <td className="py-3 px-6">{material.tenCl}</td> {/* Changed to tenCl */}
+                                    <td className="py-3 px-6">{material.maCl}</td>
+                                    <td className="py-3 px-6">{material.tenCl}</td>
                                     <td className="py-3 px-6 flex items-center justify-center gap-2">
                                         <button
                                             onClick={() => handleEdit(material)}
@@ -216,7 +241,7 @@ function ChatLieu() {
                                             Sửa
                                         </button>
                                         <button
-                                            onClick={() => handleDelete(material.maCl)} // Changed to maCl
+                                            onClick={() => handleDelete(material.maCl)}
                                             className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded"
                                         >
                                             Xóa
