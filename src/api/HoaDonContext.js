@@ -1,69 +1,3 @@
-// import React, { createContext, useState, useContext, useCallback, useMemo, useEffect } from 'react';
-// import axios from 'axios';
-// import { AuthContext } from './AuthContext';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// export const HoaDonContext = createContext();
-
-// export const HoaDonProvider = ({ children }) => {
-//     const { token: authToken, logout } = useContext(AuthContext);
-//     const [HoaDonChoGiaoHang, setHoaDons] = useState(null);
-//     const [loading, setLoading] = useState(false);
-//     const [token, setToken] = useState(authToken || localStorage.getItem('token') || '');
-
-//     useEffect(() => {
-//         setToken(authToken);
-//     }, [authToken]);
-
-//     const fetchHoaDons = useCallback(
-//         async (pageNumber = 1, pageSize = 10) => {
-//             if (!token) {
-//                 toast.error('Vui lòng đăng nhập để xem danh sách hóa đơn');
-//                 return;
-//             }
-//             setLoading(true);
-//             try {
-//                 const response = await axios.get('https://localhost:7111/api/Hdb/GetChoGiaoHang', {
-//                     headers: { Authorization: `Bearer ${token}` },
-//                     params: { pageNumber, pageSize },
-//                 });
-//                 if (response.data?.HoaDonChoGiaoHang) {
-//                     setHoaDons(response.data);
-//                 } else {
-//                     toast.info('Không có hóa đơn nào đang chờ giao hàng');
-//                     setHoaDons({ message: 'Không có hóa đơn nào', HoaDonChoGiaoHang: [] });
-//                 }
-//             } catch (err) {
-//                 const status = err.response?.status;
-//                 if (status === 401) {
-//                     toast.error('Phiên đăng nhập hết hạn, vui lòng đăng nhập lại');
-//                     logout?.();
-//                 } else if (status === 404 || status === 400) {
-//                     toast.info('Không có hóa đơn nào đang chờ giao hàng');
-//                     setHoaDons({ message: 'Không có hóa đơn nào', HoaDonChoGiaoHang: [] });
-//                 } else {
-//                     toast.error(err.response?.data?.message || 'Lỗi khi lấy danh sách hóa đơn');
-//                 }
-//                 setHoaDons(null);
-//             } finally {
-//                 setLoading(false);
-//             }
-//         },
-//         [token, logout],
-//     );
-
-//     const value = useMemo(
-//         () => ({
-//             HoaDonChoGiaoHang,
-//             loading,
-//             fetchHoaDons,
-//         }),
-//         [HoaDonChoGiaoHang, loading, fetchHoaDons],
-//     );
-
-//     return <HoaDonContext.Provider value={value}>{children}</HoaDonContext.Provider>;
-// };
 import React, { createContext, useState, useCallback, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
@@ -97,9 +31,11 @@ export const HoaDonProvider = ({ children }) => {
                     headers: { Authorization: `Bearer ${authToken}` },
                     params: { pageNumber, pageSize },
                 });
+
+                const totalItems = response.data?.totalItems || 0; // Lấy totalItems từ API
                 const data = response.data?.hoaDons
                     ? { ...response.data, data: response.data.hoaDons }
-                    : { message: 'Không có hóa đơn nào', data: [], currentPage: 1, totalPages: 1 };
+                    : { message: 'Không có hóa đơn nào', data: [], currentPage: 1, totalPages: 1, totalItems: 0 };
                 setInvoices(data);
                 if (!response.data?.hoaDons) {
                     toast.info('Không có hóa đơn nào');

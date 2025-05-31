@@ -56,7 +56,7 @@ function Cart() {
                 <div className="mx-auto max-w-5xl">
                     <div className="flex justify-end">
                         <Link
-                            to="/orders"
+                            to="/OrderChoxacnhan"
                             title="Orders"
                             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                         >

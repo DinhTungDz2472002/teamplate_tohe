@@ -9,6 +9,7 @@ import { AuthProvider } from '~/api/AuthContext';
 import { CartProvider } from '~/api/CartContext';
 import { OrderProvider } from '~/api/OrderContext';
 import { HoaDonProvider } from '~/api/HoaDonContext';
+import { DsOrderProvider } from './api/DsOrderContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,20 +18,22 @@ root.render(
             <CartProvider>
                 <OrderProvider>
                     <HoaDonProvider>
-                        <App />
-                        <ToastContainer
-                            position="top-right"
-                            autoClose={800}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick={false}
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                            theme="light"
-                            transition={Bounce}
-                        />
+                        <DsOrderProvider>
+                            <App />
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={800}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick={false}
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="light"
+                                transition={Bounce}
+                            />
+                        </DsOrderProvider>
                     </HoaDonProvider>
                 </OrderProvider>
             </CartProvider>

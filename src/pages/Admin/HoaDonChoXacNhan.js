@@ -2,13 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import { HoaDonContext } from '~/api/HoaDonContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Pagination from '~/components/Pagination';
 const HoaDonChoXacNhan = () => {
     const { invoices, loading, fetchHoaDons } = useContext(HoaDonContext);
     const [pageNumber, setPageNumber] = useState(1);
-    const [pageSize] = useState(10);
+    const [pageSize, setPageSize] = useState(8);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         fetchHoaDons(pageNumber, pageSize, 'ChoXacNhan');
+        if (invoices?.totalItems) {
+            setTotalPages(Math.ceil(invoices.totalItems / pageSize) || 1);
+        } else {
+            setTotalPages(1);
+        }
     }, [fetchHoaDons, pageNumber, pageSize]);
 
     if (loading) {
@@ -19,11 +26,6 @@ const HoaDonChoXacNhan = () => {
         return <p className="text-center text-red-500 text-lg">Không có dữ liệu</p>;
     }
 
-    const handlePageChange = (newPage) => {
-        if (newPage > 0 && newPage <= invoices.totalPages) {
-            setPageNumber(newPage);
-        }
-    };
     const handleEditStatus_Hdb = async (maHdb, endpoint, newstatus) => {
         try {
             const token = localStorage.getItem('token');
@@ -48,9 +50,36 @@ const HoaDonChoXacNhan = () => {
             toast.error(errorMessage);
         }
     };
+    const handleChangePage = (newPage) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setPageNumber(newPage);
+        }
+    };
+
+    const handleChangePageSize = (e) => {
+        const newSize = parseInt(e.target.value) || 8;
+        setPageSize(newSize);
+        setPageNumber(1);
+    };
 
     return (
         <div className="max-w-5xl mx-auto p-8 bg-gray-50 min-h-screen">
+            {/* Page Size Selector */}
+            <div className="flex items-center gap-2 w-full sm:w-52 sm:ml-auto">
+                <span className="text-xs font-medium text-gray-700 whitespace-nowrap">Hiển thị:</span>
+                <select
+                    value={pageSize}
+                    onChange={handleChangePageSize}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors duration-200 bg-white text-gray-900 text-sm"
+                >
+                    {[8, 12, 16, 20].map((size) => (
+                        <option key={size} value={size}>
+                            {size} Sản phẩm
+                        </option>
+                    ))}
+                </select>
+            </div>
+
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-10">Danh sách hóa đơn chờ xác nhận</h2>
             {invoices.data.length === 0 ? (
                 <p className="text-center text-gray-600 text-xl">{invoices.message}</p>
@@ -166,29 +195,10 @@ const HoaDonChoXacNhan = () => {
                     ))}
                 </div>
             )}
-            {invoices.data.length > 0 && (
-                <div className="mt-8 flex justify-center space-x-4">
-                    <button
-                        onClick={() => handlePageChange(pageNumber - 1)}
-                        disabled={pageNumber === 1}
-                        className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                        aria-label="Trang trước"
-                    >
-                        Trang trước
-                    </button>
-                    <span className="px-4 py-2 text-gray-700" aria-current="page">
-                        Trang {invoices.currentPage} / {invoices.totalPages}
-                    </span>
-                    <button
-                        onClick={() => handlePageChange(pageNumber + 1)}
-                        disabled={pageNumber === invoices.totalPages}
-                        className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                        aria-label="Trang sau"
-                    >
-                        Trang sau
-                    </button>
-                </div>
-            )}
+
+            <div className="flex justify-center mt-8">
+                <Pagination pageNumber={pageNumber} totalPages={totalPages} onPageChange={handleChangePage} />
+            </div>
         </div>
     );
 };

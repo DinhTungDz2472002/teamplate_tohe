@@ -29,6 +29,11 @@ import ProductDetail from '~/pages/ProductDetail';
 import Loai from '~/pages/Admin/Loai';
 import ChatLieu from '~/pages/Admin/Chatlieu';
 import ThongKe from '~/pages/Admin/Thongke';
+import OrderChoXacNhan from '~/pages/User/OrderChoXacNhan';
+import OrderChoGiaoHang from '~/pages/User/OrderChoGiaoHang';
+import OrderDaGiao from '~/pages/User/OrderDaGiao';
+import OrderDaHuy from '~/pages/User/OrderDaHuy';
+import OrderKhachMuonHuy from '~/pages/User/OrderKhachMuonHuy';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -50,6 +55,15 @@ const publicRoutes = [
     { path: '/Profile', component: Profile },
 
     { path: '/orders', component: Order, Layout: MainLayoutUser },
+
+    // List Order
+    { path: '/OrderChoxacnhan', component: OrderChoXacNhan, Layout: MainLayoutUser },
+    { path: '/OrderChogiaohang', component: OrderChoGiaoHang, Layout: MainLayoutUser },
+
+    { path: '/OrderDagiao', component: OrderDaGiao, Layout: MainLayoutUser },
+
+    { path: '/OrderDahuy', component: OrderDaHuy, Layout: MainLayoutUser },
+    { path: '/OrderKhachmuonhuy', component: OrderKhachMuonHuy, Layout: MainLayoutUser },
 ];
 
 const privateRoutes = [

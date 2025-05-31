@@ -234,9 +234,11 @@ import axios from 'axios';
 
 function ListProducts() {
     const [products, setProducts] = useState([]);
+
     const [pageNumber, setPageNumber] = useState(1);
     const [pageSize, setPageSize] = useState(8);
     const [totalPages, setTotalPages] = useState(1);
+
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
