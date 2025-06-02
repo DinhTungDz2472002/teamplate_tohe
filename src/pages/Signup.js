@@ -37,7 +37,7 @@ function Signup() {
         setError('');
         try {
             await register(formData);
-            navigate('/check');
+            navigate('/');
         } catch (err) {
             toast.error('Tên đăng nhập hoặc Email đã được sử dụng!');
             setError(err.message || 'Tên đăng nhập hoặc Email đã được sử dụng!');

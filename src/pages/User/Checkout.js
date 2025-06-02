@@ -130,7 +130,7 @@ const Checkout = () => {
             localStorage.removeItem('selectedCartItems');
             await fetchCart();
             toast.success(response.message || 'Đặt hàng thành công! Hóa đơn đã được gửi qua email.');
-            navigate('/orders', { state: { hoaDon: response.hoaDon } });
+            navigate('/OrderChoxacnhan', { state: { hoaDon: response.hoaDon } });
         } catch (error) {
             setError(error.message || 'Lỗi khi đặt hàng.');
             toast.error(error.message || 'Lỗi khi đặt hàng.');

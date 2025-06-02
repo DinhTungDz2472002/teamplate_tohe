@@ -121,7 +121,7 @@ const OrderDaHuy = () => {
                                         Trạng thái:{' '}
                                         <span
                                             className={`font-normal ${
-                                                hoaDon.status === 'Chờ xác nhận' ? 'text-yellow-600' : 'text-blue-600'
+                                                hoaDon.status === 'Chờ xác nhận' ? 'text-yellow-600' : 'text-red-600'
                                             }`}
                                         >
                                             {hoaDon.status}
