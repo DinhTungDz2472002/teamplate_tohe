@@ -5,6 +5,7 @@ import MainLayoutAdmin from './components/Admin/MainLayoutAdmin';
 import './App.css';
 import MainLayoutUser from './components/User/MainLayoutUser';
 import { jwtDecode } from 'jwt-decode';
+import { toast } from 'react-toastify';
 // Hàm kiểm tra token và lấy role
 // Hàm kiểm tra token và lấy role
 function getUserRoleFromToken() {
@@ -57,16 +58,11 @@ function App() {
                             />
                         );
                     })}
-                    {/* Public Routes
-                    {publicRoutes.map(async (route, index) => {
+                </Routes>
+                {/* <Routes>
+                    {privateRoutes.map((route, index) => {
+                        const Layout = route.layout || MainLayoutAdmin;
                         const Page = route.component;
-                        let Layout = DefaultLayout;
-
-                        if (route.path === '/MainLayoutAdmin') {
-                            Layout = MainLayoutAdmin;
-                        } else if (route.path === '/MainLayoutUser') {
-                            Layout = MainLayoutUser;
-                        }
                         return (
                             <Route
                                 key={index}
@@ -78,12 +74,29 @@ function App() {
                                 }
                             />
                         );
-                    })} */}
-                </Routes>
+                    })}
+                </Routes> */}
+
                 <Routes>
                     {privateRoutes.map((route, index) => {
-                        const Layout = route.layout || MainLayoutAdmin;
                         const Page = route.component;
+                        const Layout = route.layout || MainLayoutAdmin;
+                        const role = getUserRoleFromToken();
+
+                        if (!role || role !== 'Admin') {
+                            // Chỉ hiện toast cảnh báo (chỉ toast, không redirect)
+                            toast.warning('Bạn không có quyền truy cập');
+                            // Trả về một trang trắng hoặc một div trống
+                            return (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    element={<div />} // Không hiển thị gì
+                                />
+                            );
+                        }
+
+                        // Nếu là admin thì hiển thị giao diện quản trị
                         return (
                             <Route
                                 key={index}

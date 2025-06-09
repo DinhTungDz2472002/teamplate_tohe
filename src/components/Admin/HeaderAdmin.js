@@ -325,8 +325,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/ListProductAdmin"
                                     title="Sản Phẩm"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/ListProductAdmin' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/ListProductAdmin'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -335,8 +337,8 @@ function HeaderAdmin() {
                                 <Link
                                     to="/Loai"
                                     title="Loai"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/Loai' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Loai' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -345,8 +347,8 @@ function HeaderAdmin() {
                                 <Link
                                     to="/ChatLieu"
                                     title="ChatLieu"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/ChatLieu' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/ChatLieu' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -355,8 +357,8 @@ function HeaderAdmin() {
                                 <Link
                                     to="/ThongKe"
                                     title="ThongKe"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/ThongKe' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/ThongKe' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -365,8 +367,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/ThongKeSanPham"
                                     title="ThongKeSanPham"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/ThongKeSanPham' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/ThongKeSanPham'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -375,8 +379,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/HoaDon_ChoXacNhan"
                                     title="HoaDon_ChoXacNhan"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/HoaDon_ChoXacNhan' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium  transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/HoaDon_ChoXacNhan'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -385,8 +391,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/HoaDon_ChoGiaoHang"
                                     title="HoaDon_ChoGiaoHang"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/HoaDon_ChoGiaoHang' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/HoaDon_ChoGiaoHang'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -395,8 +403,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/HoaDon_DaGiao"
                                     title="HoaDon_DaGiao"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/HoaDon_DaGiao' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/HoaDon_DaGiao'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -405,10 +415,10 @@ function HeaderAdmin() {
                                 <Link
                                     to="/HoaDon_KhachMuonHuy"
                                     title="HoaDon_KhachMuonHuy"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
                                         location.pathname === '/HoaDon_KhachMuonHuy'
                                             ? 'text-blue-400 font-semibold'
-                                            : ''
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -417,19 +427,21 @@ function HeaderAdmin() {
                                 <Link
                                     to="/HoaDon_DaHuy"
                                     title="HoaDon_DaHuy"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/HoaDon_DaHuy' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/HoaDon_DaHuy'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
-                                    Đ Đơn Đã Hủy
+                                    Đơn Đã Hủy
                                 </Link>
 
                                 <Link
                                     to="/Logout"
                                     title="Đăng xuất"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/Logout' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Logout' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >

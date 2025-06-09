@@ -345,7 +345,7 @@ function Header() {
                                     to="/Signup"
                                     title="Đăng xuất"
                                     className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 ${
-                                        location.pathname === '/Logout' ? 'text-blue-600 font-semibold' : 'text-black'
+                                        location.pathname === '/Signup' ? 'text-blue-600 font-semibold' : 'text-black'
                                     }`}
                                 >
                                     Đăng Ký
@@ -354,7 +354,7 @@ function Header() {
                                     to="/Login"
                                     title="Đăng xuất"
                                     className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 ${
-                                        location.pathname === '/Logout' ? 'text-blue-600 font-semibold' : 'text-black'
+                                        location.pathname === '/Login' ? 'text-blue-600 font-semibold' : 'text-black'
                                     }`}
                                 >
                                     Đăng Nhập
@@ -419,8 +419,8 @@ function Header() {
                                 <Link
                                     to="/"
                                     title="Trang Chủ"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/' ? 'text-blue-400 font-semibold' : 'text-white '
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -429,8 +429,10 @@ function Header() {
                                 <Link
                                     to="/Introduce"
                                     title="Giới Thiệu"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/Introduce' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Introduce'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -439,8 +441,10 @@ function Header() {
                                 <Link
                                     to="/CheckPrice"
                                     title="Báo Giá"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/CheckPrice' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/CheckPrice'
+                                            ? 'text-blue-400 font-semibold'
+                                            : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
@@ -449,25 +453,35 @@ function Header() {
                                 <Link
                                     to="/Contact"
                                     title="Liên Hệ"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/Contact' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Contact' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     Liên Hệ
                                 </Link>
+                                <hr className="my-4 border-gray-600" />
                                 <Link
-                                    to="/Logout"
+                                    to="/Signup"
                                     title="Đăng xuất"
-                                    className={`py-2 text-base font-medium text-white transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
-                                        location.pathname === '/Logout' ? 'text-blue-400 font-semibold' : ''
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Signup' ? 'text-blue-400 font-semibold' : 'text-white'
                                     }`}
                                     onClick={() => setMenuOpen(false)}
                                 >
-                                    Đăng Xuất
+                                    Đăng Ký
+                                </Link>
+                                <Link
+                                    to="/Login"
+                                    title="Đăng xuất"
+                                    className={`py-2 text-base font-medium transition-all duration-200 hover:text-blue-400 focus:text-blue-400 ${
+                                        location.pathname === '/Login' ? 'text-blue-400 font-semibold' : 'text-white'
+                                    }`}
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    Đăng Nhập
                                 </Link>
                             </div>
-                            <hr className="my-4 border-gray-600" />
                         </div>
                     </div>
                 </nav>

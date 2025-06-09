@@ -62,9 +62,7 @@ const publicRoutes = [
     // List Order
     { path: '/OrderChoxacnhan', component: OrderChoXacNhan, Layout: MainLayoutUser },
     { path: '/OrderChogiaohang', component: OrderChoGiaoHang, Layout: MainLayoutUser },
-
     { path: '/OrderDagiao', component: OrderDaGiao, Layout: MainLayoutUser },
-
     { path: '/OrderDahuy', component: OrderDaHuy, Layout: MainLayoutUser },
     { path: '/OrderKhachmuonhuy', component: OrderKhachMuonHuy, Layout: MainLayoutUser },
 
@@ -89,12 +87,6 @@ const privateRoutes = [
     { path: '/ThongKeSanPham', component: ThongKeSanPham },
 
     //    { path: '/ListProductAdmin', component: ListProductAdmin, layout: Sidebar }, // "Dashboard" ánh xạ đến ListProductAdmin
-    //     { path: '/admin/orders', component: OrderManagement, layout: Sidebar },
-    //     { path: '/admin/agents', component: Agents, layout: Sidebar },
-    //     { path: '/admin/customers', component: Customers, layout: Sidebar },
-    //     { path: '/admin/products', component: Products, layout: Sidebar },
-    //     { path: '/admin/analytics', component: Analytics, layout: Sidebar },
-    //     { path: '/admin/settings', component: Settings, layout: Sidebar },
 ];
 
 export { publicRoutes, privateRoutes };
