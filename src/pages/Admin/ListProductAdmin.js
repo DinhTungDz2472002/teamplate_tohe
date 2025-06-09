@@ -1205,9 +1205,12 @@ export default function ListProductAdmin() {
                             <th className="py-3 px-4 text-left text-sm font-semibold text-gray-900 min-w-[100px]">
                                 Ảnh
                             </th>
-                            {/* <th className="py-3 px-4 text-left text-sm font-semibold text-gray-900 min-w-[100px]">
+                            <th className="py-3 px-4 text-left text-sm font-semibold text-gray-900 min-w-[100px]">
                                 Loại
-                            </th> */}
+                            </th>
+                            <th className="py-3 px-4 text-left text-sm font-semibold text-gray-900 min-w-[50px]">
+                                Lượt bán
+                            </th>
                             <th className="py-3 px-4 text-left text-sm font-semibold text-gray-900 min-w-[150px]">
                                 Mô tả
                             </th>
@@ -1236,9 +1239,9 @@ export default function ListProductAdmin() {
                                     <td className="py-3 px-4">
                                         {product.anhSp ? (
                                             <img
+                                                className="w-12 h-12 object-cover rounded-md"
                                                 src={`/assets/images/${product.anhSp}`}
                                                 alt={product.tenSanPham}
-                                                className="w-12 h-12 object-cover rounded-md"
                                                 onError={(e) => {
                                                     e.target.src = '/assets/images/default.png';
                                                 }}
@@ -1247,9 +1250,10 @@ export default function ListProductAdmin() {
                                             <span className="text-sm text-gray-500">No image</span>
                                         )}
                                     </td>
-                                    {/* <td className="py-3 px-4 text-sm text-gray-900">
-                                        {product.tenLoai?.toLocaleString()}
-                                    </td> */}
+                                    <td className="py-3 px-4 text-sm text-gray-900">
+                                        {product.loaiSanPham?.toLocaleString()}
+                                    </td>
+                                    <td className="py-3 px-4 text-sm text-gray-900">{product.luotBan}</td>
                                     <td className="py-3 px-4 text-sm text-gray-900 truncate max-w-[150px]">
                                         {product.moTaSp || '-'}
                                     </td>

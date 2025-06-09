@@ -34,6 +34,9 @@ import OrderChoGiaoHang from '~/pages/User/OrderChoGiaoHang';
 import OrderDaGiao from '~/pages/User/OrderDaGiao';
 import OrderDaHuy from '~/pages/User/OrderDaHuy';
 import OrderKhachMuonHuy from '~/pages/User/OrderKhachMuonHuy';
+import ThongKeSanPham from '~/pages/Admin/ThongKeSanPham';
+import PaymentForm from '~/pages/User/Payment';
+import PaymentResult from '~/pages/User/PaymentResult';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -64,6 +67,10 @@ const publicRoutes = [
 
     { path: '/OrderDahuy', component: OrderDaHuy, Layout: MainLayoutUser },
     { path: '/OrderKhachmuonhuy', component: OrderKhachMuonHuy, Layout: MainLayoutUser },
+
+    //Payment
+    { path: '/payment', component: PaymentForm, Layout: MainLayoutUser },
+    { path: '/paymentResult', component: PaymentResult, Layout: MainLayoutUser },
 ];
 
 const privateRoutes = [
@@ -79,6 +86,7 @@ const privateRoutes = [
     { path: '/Loai', component: Loai },
     { path: '/ChatLieu', component: ChatLieu },
     { path: '/ThongKe', component: ThongKe },
+    { path: '/ThongKeSanPham', component: ThongKeSanPham },
 
     //    { path: '/ListProductAdmin', component: ListProductAdmin, layout: Sidebar }, // "Dashboard" ánh xạ đến ListProductAdmin
     //     { path: '/admin/orders', component: OrderManagement, layout: Sidebar },

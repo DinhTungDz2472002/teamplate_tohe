@@ -105,7 +105,19 @@ function Sidebar() {
                                     }`
                                 }
                             >
-                                Thống Kê
+                                Thống Kê Doanh Thu
+                            </NavLink>
+                            <NavLink
+                                to="/ThongKeSanPham"
+                                className={({ isActive }) =>
+                                    `flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 rounded-lg group ${
+                                        isActive
+                                            ? 'text-white bg-indigo-600'
+                                            : 'text-gray-900 hover:text-white hover:bg-indigo-600'
+                                    }`
+                                }
+                            >
+                                Thống Kê Sản Phẩm
                             </NavLink>
                         </nav>
 
