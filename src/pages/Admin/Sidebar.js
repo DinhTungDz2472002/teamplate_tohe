@@ -3,6 +3,7 @@ import Home from '../Home';
 import ListProductAdmin from '~/pages/Admin/ListProductAdmin';
 import OrderManagement from '~/pages/Admin/OrderManagement';
 import { FaHome } from 'react-icons/fa';
+
 function Sidebar() {
     return (
         <div className="hidden md:flex md:w-64 md:flex-col">
