@@ -18,7 +18,7 @@ const PaymentButton = () => {
         try {
             const token = localStorage.getItem('token'); // JWT nếu có
 
-            const res = await fetch(`https://localhost:7111/api/payment/create-payment`, {
+            const res = await fetch(`https://localhost:7111/api/VnPay/create-payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
