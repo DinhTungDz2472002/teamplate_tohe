@@ -295,7 +295,7 @@ function HeaderAdmin() {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <nav className="py-4 bg-[rgba(0,0,0,0.86)]  lg:hidden overflow-auto scrollbar-none h-64">
+                <nav className="py-4 bg-[rgba(0,0,0,0.86)]  lg:hidden overflow-auto scrollbar-none h-96">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between">
                             <p className="text-sm font-semibold tracking-widest text-gray-200 uppercase">Menu</p>
@@ -320,6 +320,7 @@ function HeaderAdmin() {
                                 </svg>
                             </button>
                         </div>
+                        <hr className="my-4 border-gray-600" />
                         <div className="mt-6">
                             <div className="flex flex-col space-y-2">
                                 <Link
@@ -354,6 +355,7 @@ function HeaderAdmin() {
                                 >
                                     Chất Liệu Sản Phẩm
                                 </Link>
+                                <hr className="my-4 border-gray-600" />
                                 <Link
                                     to="/ThongKe"
                                     title="ThongKe"
@@ -376,6 +378,7 @@ function HeaderAdmin() {
                                 >
                                     Thống Kê Sản Phẩm
                                 </Link>
+                                <hr className="my-4 border-gray-600" />
                                 <Link
                                     to="/HoaDon_ChoXacNhan"
                                     title="HoaDon_ChoXacNhan"
@@ -436,7 +439,7 @@ function HeaderAdmin() {
                                 >
                                     Đơn Đã Hủy
                                 </Link>
-
+                                <hr className="my-4 border-gray-600" />
                                 <Link
                                     to="/Logout"
                                     title="Đăng xuất"
@@ -448,7 +451,6 @@ function HeaderAdmin() {
                                     Đăng Xuất
                                 </Link>
                             </div>
-                            <hr className="my-4 border-gray-600" />
                         </div>
                     </div>
                 </nav>

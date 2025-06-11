@@ -105,6 +105,22 @@ const HoaDonChoGiaoHang = () => {
                                     <p className="text-gray-600">
                                         Tên khách hàng: <span className="font-normal">{hoaDon.tenKhachHang}</span>
                                     </p>
+                                    <p className="text-gray-600 mb-6">
+                                        Phương thức thanh toán:
+                                        <span
+                                            className={
+                                                hoaDon.pttt === 'Đã thanh toán qua VnPay'
+                                                    ? 'text-green-600'
+                                                    : hoaDon.pttt === 'Chờ thanh toán'
+                                                    ? 'text-orange-600'
+                                                    : hoaDon.pttt === 'COD'
+                                                    ? 'text-red-600'
+                                                    : 'text-blue-600'
+                                            }
+                                        >
+                                            {hoaDon.pttt}
+                                        </span>
+                                    </p>
                                 </div>
                                 <div className="space-y-2">
                                     <p className="text-lg font-semibold text-gray-800">
@@ -126,11 +142,12 @@ const HoaDonChoGiaoHang = () => {
                                     <p className="text-gray-600">
                                         Số điện thoại: <span className="font-normal">{hoaDon.sdt}</span>
                                     </p>
+                                    <p className="text-gray-600 mb-6">
+                                        Địa chỉ nhận: <span className="font-normal">{hoaDon.diaChi}</span>
+                                    </p>
                                 </div>
                             </div>
-                            <p className="text-gray-600 mb-6">
-                                Địa chỉ nhận: <span className="font-normal">{hoaDon.diaChi}</span>
-                            </p>
+
                             <div className="flex space-x-4 mb-6">
                                 <button
                                     className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"

@@ -23,9 +23,25 @@ function Cart() {
     }
 
     if (!cart || !cart.chiTietGioHang || cart.chiTietGioHang.length === 0) {
-        return <div className="text-center py-8">Giỏ hàng của bạn đang trống</div>;
+        return (
+            <>
+                <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm/py-12 lg:px-8">
+                    <div className="mx-auto max-w-5xl">
+                        <div className="flex justify-end">
+                            <Link
+                                to="/OrderChoxacnhan"
+                                title="Orders"
+                                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                            >
+                                Danh Sách Đơn Đặt
+                            </Link>
+                        </div>
+                        <div className="text-center py-8">Giỏ hàng của bạn đang trống</div>
+                    </div>
+                </div>
+            </>
+        );
     }
-
     const handleSelectItem = (maChiTietGH) => {
         setSelectedItems((prev) =>
             prev.includes(maChiTietGH) ? prev.filter((itemId) => itemId !== maChiTietGH) : [...prev, maChiTietGH],

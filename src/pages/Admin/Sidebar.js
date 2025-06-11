@@ -67,7 +67,6 @@ function Sidebar() {
                                     }`
                                 }
                             >
-                                <FaHome />
                                 Sản Phẩm
                             </NavLink>
 
@@ -95,7 +94,7 @@ function Sidebar() {
                             >
                                 Chất Liệu
                             </NavLink>
-
+                            <hr className="border-gray-200" />
                             <NavLink
                                 to="/ThongKe"
                                 className={({ isActive }) =>

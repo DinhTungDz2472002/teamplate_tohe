@@ -628,6 +628,7 @@ function HeaderUser() {
                                 </svg>
                             </button>
                         </div>
+                        <hr className="my-4 border-gray-600" />
                         <div className="mt-6">
                             <div className="flex flex-col space-y-2">
                                 <Link
@@ -670,6 +671,7 @@ function HeaderUser() {
                                 >
                                     Liên Hệ
                                 </Link>
+                                <hr className="my-4 border-gray-600" />
                                 <Link
                                     to="/Logout"
                                     title="Đăng xuất"
@@ -681,7 +683,6 @@ function HeaderUser() {
                                     Đăng Xuất
                                 </Link>
                             </div>
-                            <hr className="my-4 border-gray-600" />
                         </div>
                     </div>
                 </nav>

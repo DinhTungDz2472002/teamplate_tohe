@@ -550,6 +550,9 @@ const OrderDaGiao = () => {
                                     <p className="text-gray-600">
                                         Tên khách hàng: <span className="font-normal">{hoaDon.tenKhachHang}</span>
                                     </p>
+                                    <p className="text-gray-600 mb-6">
+                                        Địa chỉ nhận: <span className="font-normal">{hoaDon.diaChi}</span>
+                                    </p>
                                 </div>
                                 <div className="space-y-2">
                                     <p className="text-lg font-semibold text-gray-800">
@@ -571,11 +574,25 @@ const OrderDaGiao = () => {
                                     <p className="text-gray-600">
                                         Số điện thoại: <span className="font-normal">{hoaDon.sdt}</span>
                                     </p>
+                                    <p className="text-gray-600 mb-6">
+                                        Phương thức thanh toán:
+                                        <span
+                                            className={
+                                                hoaDon.pttt === 'Đã thanh toán qua VnPay'
+                                                    ? 'text-green-600'
+                                                    : hoaDon.pttt === 'Chờ thanh toán'
+                                                    ? 'text-orange-600'
+                                                    : hoaDon.pttt === 'COD'
+                                                    ? 'text-red-600'
+                                                    : 'text-blue-600'
+                                            }
+                                        >
+                                            {hoaDon.pttt}
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
-                            <p className="text-gray-600 mb-6">
-                                Địa chỉ nhận: <span className="font-normal">{hoaDon.diaChi}</span>
-                            </p>
+
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Chi tiết hóa đơn</h3>
                             <div className="overflow-x-auto rounded-lg border border-gray-200">
                                 <table className="w-full text-left border-collapse">

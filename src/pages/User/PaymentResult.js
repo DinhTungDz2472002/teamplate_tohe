@@ -93,10 +93,10 @@ const PaymentResult = () => {
             </div>
             <div className="mt-6 text-center">
                 <a
-                    href="/"
+                    href="/OrderChoxacnhan"
                     className="inline-block px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                    Quay lại trang chủ
+                    Danh Sách Đơn Đặt
                 </a>
             </div>
         </div>

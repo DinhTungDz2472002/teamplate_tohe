@@ -414,6 +414,7 @@ function Header() {
                                 </svg>
                             </button>
                         </div>
+                        <hr className="my-4 border-gray-600" />
                         <div className="mt-6">
                             <div className="flex flex-col space-y-2">
                                 <Link
