@@ -8,6 +8,8 @@ function ChatLieu() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [deleteId, setDeleteId] = useState(null);
 
     // Base URL for API
     const API_BASE_URL = 'https://localhost:7111';
@@ -79,19 +81,17 @@ function ChatLieu() {
                 responseData.message || (editingId ? 'Cập nhật chất liệu thành công' : 'Thêm chất liệu thành công'),
             );
         } catch (err) {
-            setError(err.message);
-            toast.error(err.message);
+            toast.error('Tên Chất liệu đã tồn tại');
         } finally {
             setLoading(false);
         }
     };
 
     // Delete material
-    const handleDelete = async (id) => {
-        if (!window.confirm('Bạn có chắc muốn xóa chất liệu này?')) return;
+    const handleDelete = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${API_BASE_URL}/api/Delete_ChatLieu/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/api/Delete_ChatLieu/${deleteId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -101,13 +101,21 @@ function ChatLieu() {
             const responseData = await response.json();
             await fetchMaterials();
             setError(null);
+            setIsDeleteModalOpen(false);
+            setDeleteId(null);
             toast.success(responseData.message || 'Xóa chất liệu thành công');
         } catch (err) {
-            setError(err.message);
-            toast.error(err.message);
+            toast.error('Không thể xóa do dữ liệu đã tồn tại');
+            setIsDeleteModalOpen(false);
         } finally {
             setLoading(false);
         }
+    };
+
+    // Open delete confirmation modal
+    const openDeleteModal = (id) => {
+        setDeleteId(id);
+        setIsDeleteModalOpen(true);
     };
 
     // Edit material
@@ -133,6 +141,12 @@ function ChatLieu() {
         setError(null);
     };
 
+    // Close delete modal
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(false);
+        setDeleteId(null);
+    };
+
     // Fetch materials on component mount
     useEffect(() => {
         fetchMaterials();
@@ -149,7 +163,7 @@ function ChatLieu() {
                 </button>
             </div>
 
-            {/* Modal */}
+            {/* Modal for Add/Edit */}
             {isModalOpen && (
                 <div
                     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -202,6 +216,33 @@ function ChatLieu() {
                 </div>
             )}
 
+            {/* Delete Confirmation Modal */}
+            {isDeleteModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg w-[90%] sm:max-w-[300px] text-center">
+                        <h2 className="text-base sm:text-lg font-bold mb-4 text-gray-800">Bạn có chắc muốn xóa?</h2>
+                        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+                        <div className="flex justify-center gap-4">
+                            <button
+                                type="button"
+                                className="bg-gray-400 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                                onClick={closeDeleteModal}
+                            >
+                                Hủy
+                            </button>
+                            <button
+                                type="button"
+                                className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                                onClick={handleDelete}
+                                disabled={loading}
+                            >
+                                {loading ? 'Đang xóa...' : 'Xóa'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Material list */}
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -241,7 +282,7 @@ function ChatLieu() {
                                             Sửa
                                         </button>
                                         <button
-                                            onClick={() => handleDelete(material.maCl)}
+                                            onClick={() => openDeleteModal(material.maCl)}
                                             className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded"
                                         >
                                             Xóa

@@ -38,11 +38,17 @@ const HoaDonChoXacNhan = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(maHdb, endpoint);
+            console.log(maHdb, endpoint, response);
+
+            // Check if the response status is 200 (OK) and handle the response data
             if (response.status === 200) {
-                // Refresh the invoice list after successful update
-                fetchHoaDons(pageNumber, pageSize, 'ChoXacNhan');
-                toast.success(` ${newstatus}`);
+                // Optionally, verify the returned invoice status
+                if (response.data?.status === 'Chờ giao hàng') {
+                    fetchHoaDons(pageNumber, pageSize, 'ChoXacNhan');
+                    toast.success(`${newstatus}`);
+                } else {
+                    toast.error('Cập nhật trạng thái không thành công.');
+                }
             }
         } catch (error) {
             console.error('Error updating status:', error);

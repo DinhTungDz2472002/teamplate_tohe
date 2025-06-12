@@ -74,7 +74,11 @@ const PaymentResult = () => {
                 </div>
                 <div className="flex justify-between py-2 border-b">
                     <span className="font-semibold text-gray-700">Thông tin:</span>
-                    <span className="text-gray-900">{query.vnp_OrderInfo}</span>
+                    <span className="text-gray-900">
+                        {' '}
+                        Thanh toán {query.vnp_TransactionStatus === '00' ? 'Thành công' : 'Thất bại'} mã hóa đơn{' '}
+                        {query.vnp_OrderInfo}
+                    </span>
                 </div>
                 <div className="flex justify-between py-2 border-b">
                     <span className="font-semibold text-gray-700">Thời gian thanh toán:</span>
