@@ -1,76 +1,3 @@
-// import React, { useState } from 'react';
-
-// const Introduce = () => {
-//     // Mảng ảnh mẫu (có thể thay bằng API)
-//     const images = ['/assets/images/introduce1.png', '/assets/images/introduce.jpg', '/assets/images/introduce2.jpg'];
-
-//     const [currentIndex, setCurrentIndex] = useState(0);
-
-//     // Chuyển ảnh trước
-//     const prevSlide = () => {
-//         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-//     };
-
-//     // Chuyển ảnh tiếp theo
-//     const nextSlide = () => {
-//         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-//     };
-
-//     // Chuyển đến ảnh cụ thể khi nhấp chấm
-//     const goToSlide = (index) => {
-//         setCurrentIndex(index);
-//     };
-
-//     return (
-//         <div className="relative w-full max-w-3xl mx-auto mt-10 mb-10">
-//             {/* Ảnh slider */}
-//             <div className="overflow-hidden rounded-lg">
-//                 <div
-//                     className="flex transition-transform duration-500 ease-in-out"
-//                     style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-//                 >
-//                     {images.map((image, index) => (
-//                         <img
-//                             key={index}
-//                             src={image}
-//                             alt={`Sản phẩm ${index + 1}`}
-//                             className="w-full h-96 object-cover flex-shrink-0"
-//                             loading="lazy"
-//                         />
-//                     ))}
-//                 </div>
-//             </div>
-
-//             {/* Nút điều hướng */}
-//             <button
-//                 onClick={prevSlide}
-//                 className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
-//             >
-//                 ❮
-//             </button>
-//             <button
-//                 onClick={nextSlide}
-//                 className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
-//             >
-//                 ❯
-//             </button>
-
-//             {/* Chấm chỉ báo */}
-//             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-//                 {images.map((_, index) => (
-//                     <button
-//                         key={index}
-//                         onClick={() => goToSlide(index)}
-//                         className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-blue-500' : 'bg-gray-300'}`}
-//                     ></button>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Introduce;
-
 import React, { useState } from 'react';
 
 const Introduce = () => {
@@ -80,18 +7,36 @@ const Introduce = () => {
     // Article placeholders (replace URLs with actual links)
     const articles = [
         {
-            images: '/assets/images/slide1.png',
-            title: 'Lịch Sử Tò He Qua Các Thế Kỷ',
+            images: '/assets/images/ả rập xê út.jpg',
+            title: 'Ngày Việt Nam Tại Ả Rập Xê Út',
             url: 'https://vietnamdaysabroad.mofa.gov.vn/tin-tuc/nhieu-trai-nghiem-hap-dan-trong-ngay-viet-nam-tai-a-rap-xe-ut-2024?fbclid=IwY2xjawKiaGRleHRuA2FlbQIxMABicmlkETFUMzFaM0tOcHpqdUk2bEx2AR6JhNlneLMjDkq4RcLSyElX1QvDV6hWSapF9LsNHefxXD__gyn-bVeHFGn4dA_aem_XoyCDY_vhmzzKOctkkRz4w',
         },
         {
-            images: '/assets/images/logo.png',
-            title: 'Nghệ Thuật Làm Tò He Truyền Thống',
-            url: '#PLACEHOLDER_ARTICLE_2#',
+            images: '/assets/images/DSC_2108.jpg',
+            title: 'Ngày Việt Nam tại Brazil',
+            url: 'https://baochinhphu.vn/an-tuong-khong-gian-van-hoa-viet-trong-ngay-viet-nam-tai-brazil-102241118104609747.htm',
         },
-        { images: '/assets/images/slide3.jpg', title: 'Tò He Trong Văn Hóa Việt Nam', url: '#PLACEHOLDER_ARTICLE_3#' },
-        { images: '/assets/images/slide1.png', title: 'Cách Làm Tò He Tại Nhà', url: '#PLACEHOLDER_ARTICLE_4#' },
-        { images: '/assets/images/slide2.jpg', title: 'Tò He Trong Lễ Hội Dân Gian', url: '#PLACEHOLDER_ARTICLE_5#' },
+        {
+            images: '/assets/images/IMG_0054.jpg',
+            title: 'Ngày Việt Nam tại Nam Phi',
+            url: 'https://dantri.com.vn/van-hoa/cong-chung-nam-phi-thich-thu-mac-co-phuc-trieu-nguyen-in-tranh-nan-to-he-20230916094156031.htm',
+        },
+        {
+            images: '/assets/images/slide1.png',
+            title: 'Ngày Việt Nam tại Nhật Bản',
+            url: 'https://nhandan.vn/ngay-viet-nam-tai-nhat-ban-2023-ton-vinh-tinh-huu-nghi-va-van-hoa-viet-nam-post785552.html',
+        },
+        {
+            images: '/assets/images/z5011895044434_c10cc6be49172228402c8b0d659d3ee5.jpg',
+            title: 'Ngày Việt Nam tại Pháp',
+            url: 'https://vietnamdaysabroad.mofa.gov.vn/ngay-viet-nam-o-phap',
+        },
+
+        {
+            images: '/assets/images/IMG_1187.jpg',
+            title: 'Ngày Việt Nam tại Ấn Độ',
+            url: 'https://vietnamdaysabroad.mofa.gov.vn/ngay-viet-nam-o-an-do',
+        },
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
